@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div" index="1" class="divClass"></div>
+    <script>
+        var div = document.querySelector('div');
+
+        // 1.获取属性值的两种方式：
+        // 方式一：element.属性名 获取的是元index素内置的属性值        
+        console.log(div.id);
+        // 方式二：element.getAttribute('index') 还可以获取自定义的属性值
+        console.log(div.getAttribute('id'));
+        console.log(div.getAttribute('index'));
+
+        // 2.设置属性值
+        div.id = "div2"
+        div.className = "divClass1"
+        div.setAttribute('index', 2)
+        div.setAttribute('class', 'divClass2');
+        // 一般设置内置属性直接用element.id这种方式，设置自定义属性使用element.setAttribute
+
+        // 3.移除属性值
+        div.removeAttribute('index')
+        div.removeAttribute('id')
+    </script>
+</body>
+
+</html>

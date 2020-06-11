@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <script>
+        // 事件三要素：事件源，事件类型，事件处理函数
+
+        // 执行事件的步骤：
+        // 1.获取事件源
+        var btn = document.querySelector('button');
+        // 2.绑定事件
+        // btn.onclick
+        // 3.添加事件处理程序
+        btn.onclick = function() {
+            alert(1)
+        };
+        // ♥实现一个特效的关键：分析出事件的三要素
+    </script>
+</body>
+
+</html>

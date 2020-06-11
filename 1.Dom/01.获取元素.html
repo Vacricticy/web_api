@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <ul class="ul">
+        <li>苹果1</li>
+        <li>苹果11</li>
+        <li>苹果111</li>
+        <li>苹果1111</li>
+    </ul>
+    <ol id="ol">
+        <li>香蕉1</li>
+        <li>香蕉11</li>
+        <li>香蕉111</li>
+        <li>香蕉1111</li>
+    </ol>
+
+    <!-- script标签写在div后面是因为页面是自上向下加载的 -->
+    <script>
+        //方法一：document.getElementById
+        // var app = document.getElementById('app')
+        // console.log(app);
+        // // 1.console.dir()可以打印出对象内部的属性
+        // console.dir(app);
+        // // 2.获取到的标签是一个对象
+        // console.log(typeof app); //Object
+
+        // 方法二：document.getElementsByTagName
+        // 注意1：直接使用document，指的是整个文档，所获取的是所有的li标签
+        // 注意2：♥ 获取到的数组是伪数组NodeList，没有some,push等方法。只有forEach，keys方法和length属性
+
+        // var lis = document.getElementsByTagName('li')
+        // console.log(lis); //HTMLCollection(8) [li, li, li, li, li, li, li, li]
+        // var ol = document.getElementById('ol')
+        // var ol_lis = ol.getElementsByTagName('li')
+        // console.log(ol_lis);
+
+        // 方法三：使用HTML5新增的api
+        // 注意：html5在IE9之后才支持
+        // API1:document.getElementsByClassName('ul')
+        // API2:document.querySelector('#app') 获取匹配的第一个元素
+        // API3:document.querySelectorAll('li')
+
+        // 方法四：【特殊情况】获取body元素和html元素
+        var body = document.body
+        console.log(body);
+
+        var html = document.documentElement
+        console.log(html);
+    </script>
+</body>
+
+</html>

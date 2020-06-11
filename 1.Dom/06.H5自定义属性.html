@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div data-index="1"></div>
+    <script>
+        var div = document.querySelector('div')
+        div.setAttribute('data-index', 2);
+        div.setAttribute('data-time', 20);
+
+        // 获取h5自定义的属性
+
+        // 1.兼容性获取
+        console.log(div.getAttribute('data-index'));
+
+        // 2.通过dataset获取
+        // 注意1: IE11以上才支持
+        // 注意2：只能获取以data-开头的自定义属性。
+        console.log(div.dataset); //DOMStringMap {index: "2", time: "20"}
+        console.log(div.dataset.index); //2
+        console.log(div.dataset['index']); //2
+        // 注意3：如果自定义属性由多个-组成，则获取属性值时需要使用驼峰命名法
+        div.setAttribute('data-list-name-title', 'tom')
+        console.log(div.dataset.listNameTitle); //tom
+    </script>
+</body>
+
+</html>
