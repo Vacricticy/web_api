@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+    </ul>
+    <button>添加</button>
+    <script>
+        var ul = document.querySelector('ul')
+        var btn = document.querySelector('button')
+        btn.onclick = function() {
+            // 克隆节点 cloneNode() 参数为空或false表示浅拷贝，只拷贝最外面一层。参数为true表示深度拷贝
+            var newLi = ul.children[0].cloneNode(true)
+            ul.appendChild(newLi)
+        }
+    </script>
+</body>
+
+</html>

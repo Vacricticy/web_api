@@ -10,6 +10,7 @@
 <body>
     <div data-index="1"></div>
     <script>
+        // H5规定自定义属性以data-开头
         var div = document.querySelector('div')
         div.setAttribute('data-index', 2);
         div.setAttribute('data-time', 20);
@@ -20,8 +21,9 @@
         console.log(div.getAttribute('data-index'));
 
         // 2.通过dataset获取
-        // 注意1: IE11以上才支持
+        // 注意1: 【兼容性】IE11以上才支持
         // 注意2：只能获取以data-开头的自定义属性。
+        console.dir(div);
         console.log(div.dataset); //DOMStringMap {index: "2", time: "20"}
         console.log(div.dataset.index); //2
         console.log(div.dataset['index']); //2

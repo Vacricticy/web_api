@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>添加</button>
+    <p>222</p>
+    <div></div>
+    <script>
+        // 方式一：document.write()
+        // document.write("<div>333</div>")
+
+        // 若在页面渲染完毕后调用document.write()方法，则会导致页面重绘
+        // var btn = document.querySelector('button')
+        // btn.onclick = function() {
+        //     document.write("<div>333</div>")
+        // }
+
+        // 同上，当页面渲染完毕后调用
+        // window.onload = function() {
+        //     document.write("<div>333</div>")
+        // }
+
+
+        // 面试：element.createElement()与element.innerHTML那个效率更高
+        var div = document.querySelector('div');
+        var start = new Date();
+        // 1.采用innerHTML拼接字符串，需要3秒左右
+        // for (var i = 0; i < 1000; i++) {
+        //     div.innerHTML += "<a>哈喽</a>"
+        // }
+
+        // 2.采用innerHTML拼接数组，只需3ms
+        // var as = []
+        // for (var i = 0; i < 1000; i++) {
+        //     as.push('<a>哈喽</a>')
+        // }
+        // div.innerHTML = as.join("");
+
+        // 3.采用createElement,需要14ms
+        // for (var i = 0; i < 1000; i++) {
+        //     var a = document.createElement('a')
+        //     a.innerHTML = "哈喽"
+        //     div.appendChild(a)
+        // }
+
+        var end = new Date()
+        console.log(end - start);
+
+        // 综上：
+        // 创建多个元素时，使用innerHTML采用数组拼接的方式，其效率 > 使用createElement >>> 使用innerHTML采用字符串拼接的方式
+        // 但createElement的优点是结构更清晰
+    </script>
+</body>
+
+</html>

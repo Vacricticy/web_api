@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            padding: 100px;
+        }
+        
+        textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid pink;
+            outline: none;
+            resize: none;
+        }
+        
+        ul {
+            margin-top: 50px;
+        }
+        
+        li {
+            width: 300px;
+            padding: 5px;
+            background-color: rgb(245, 209, 243);
+            color: red;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        
+        li a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul>
+
+    </ul>
+    <script>
+        var button = document.querySelector('button')
+        var text = document.querySelector("textarea")
+        var ul = document.querySelector('ul')
+        button.onclick = function() {
+            var li = document.createElement('li');
+            // 阻止链接跳转 <a href="javascript:void(0)" ></a> 或href="javascript:;"
+            li.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+            // 添加元素节点
+            ul.insertBefore(li, ul.children[0])
+            var as = document.querySelectorAll('a')
+            as.forEach(value => {
+                value.onclick = function() {
+                    // 删除元素节点
+                    ul.removeChild(this.parentNode)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

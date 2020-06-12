@@ -13,22 +13,25 @@
         var div = document.querySelector('div');
 
         // 1.获取属性值的两种方式：
-        // 方式一：element.属性名 获取的是元index素内置的属性值        
-        console.log(div.id);
+        // 方式一：element.属性名 获取的是元素内置的属性值        
+        // console.log(div.id);
         // 方式二：element.getAttribute('index') 还可以获取自定义的属性值
-        console.log(div.getAttribute('id'));
-        console.log(div.getAttribute('index'));
+        // console.log(div.getAttribute('id'));
+        // console.log(div.getAttribute('index'));
 
         // 2.设置属性值
+        div.balabala = 2; //直接设置在内置对象上的
         div.id = "div2"
         div.className = "divClass1"
-        div.setAttribute('index', 2)
-        div.setAttribute('class', 'divClass2');
+        div.setAttribute('index', 2) //自定义属性是直接设置在outerHTML上的
+        div.setAttribute('class', 'divClass2'); //这里的class是内置属性
+        div.setAttribute('balabala2', '22'); //自定义属性
+        console.dir(div);
         // 一般设置内置属性直接用element.id这种方式，设置自定义属性使用element.setAttribute
 
         // 3.移除属性值
-        div.removeAttribute('index')
-        div.removeAttribute('id')
+        // div.removeAttribute('index')
+        // div.removeAttribute('id')
     </script>
 </body>
 

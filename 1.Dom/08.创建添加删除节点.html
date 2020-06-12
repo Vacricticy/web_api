@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>
+            middle
+        </li>
+        <li>
+            444
+        </li>
+        <li>
+            555
+        </li>
+    </ul>
+    <button>删除</button>
+    <script>
+        var ul = document.querySelector('#ul');
+        // 创建节点
+        var li = document.createElement('li');
+        li.innerHTML = 'balabala';
+        // 在父元素的最后添加节点
+        ul.appendChild(li)
+
+        // 在父元素中某个子元素前添加节点
+        var li2 = document.createElement('li');
+        li2.innerHTML = "first"
+        ul.insertBefore(li2, ul.children[0])
+
+        // 删除父元素中的子节点 parentElement.removeChild(childNode)
+        var btn = document.querySelector('button')
+        btn.onclick = function() {
+            ul.removeChild(ul.children[ul.children.length - 1])
+        }
+    </script>
+</body>
+
+</html>

@@ -59,7 +59,7 @@
         // innerText,innerHTML
 
         // innerText与innerHTML的区别
-        // innerText   1.获取的纯文本，不能设置html代码 2.非标准的，IE发起的，老版本的火狐不支持 
+        // innerText   1.获取的纯文本，不能设置html代码 2.【兼容性】非标准的，IE发起的，老版本的火狐不支持 
         // innerHTML   1.可以设置和获取html代码 2.W3C制定的标准
         var p = document.querySelector('p');
         console.log(p.innerText);
@@ -87,7 +87,7 @@
 
         // 实际应用2：
         // 常见的登录注册：输入密码后，点击按钮显示密码并修改图标，再次点击隐藏密码并修改图标
-        // 需要设置一个标记值flag，每次点击时根据不同的flag值做不同的处理
+        // ❤ 需要设置一个标记值flag，每次点击时根据不同的flag值做不同的处理
         // var flag = 0
         // xxx.onclick = function() {
         //     if (flag === 0) {
@@ -113,7 +113,7 @@
 
 
         // 实际应用1：淘宝，点击关闭按钮，隐藏二维码
-        // 通过xxx.style.display:none和xxx.style.display:block隐藏和显示元素
+        // 通过xxx.style.display='none'和xxx.style.display='block'隐藏和显示元素
 
         // 实际应用2：京东搜索栏，键入输入框，清空原提示文本，输入的内容颜色变深。
         // 移除文本框，若输入的值为空，则显示提示的文本，且提示的文本颜色变浅
@@ -136,7 +136,7 @@
         // ❤用于对样式更改地比较多的情况
 
 
-        // 另外：
+        // 其他：
         // 排他思想案例：京东轮播图下面的小圆点，移入某一个小圆点，该圆点会高亮，其他圆点的高亮会被隐藏。
         // 排他思想原理：先取消所有的样式，再单独为触发的事件源设置样式
 

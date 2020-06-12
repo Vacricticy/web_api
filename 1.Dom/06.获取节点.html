@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>124<span>333</span></div>
+
+    <div id="parent">
+        <span id="child">222</span>
+    </div>
+    <ul>
+        <li>NO.1</li>
+        <li>NO.2</li>
+        <li>NO.3</li>
+        <li>NO.4</li>
+    </ul>
+    <script>
+        // 利用节点层次关系获取元素会使逻辑性更强
+
+        // 1.节点三要素：节点名nodeName,节点类型nodeType,节点值nodeValue
+
+        // 元素节点的nodeType为1
+        // 属性节点的nodeType为2
+        // 文本节点的nodeType为3（文字节点包括文字，空格，换行）
+
+        // 实际应用中主要操作的是元素节点
+
+        // var div = document.querySelector('div')
+        // console.dir(div)
+        // console.log(div);
+        // console.log(div.nodeName); //DIV
+        // console.log(div.nodeType); //1
+        // console.log(div.nodeValue); //null
+
+
+
+        // 2.获取父节点 element.parentNode
+        var span = document.querySelector('#child')
+        console.log(span.parentNode);
+
+
+
+        // 3.获取子节点
+        // 3.1 element.childNodes。 
+        // 标准。但不常使用
+        // 该属性获取的是所有的子节点，其中包括元素节点和文本节点等。所有获取的ul的子节点有9个，其中包括5个换行节点和4个元素节点
+        // var ul = document.querySelector('ul')
+        // console.log(ul.childNodes); //NodeList(9) [text, li, text, li, text, li, text, li, text]
+        // console.log(ul.childNodes[0].nodeType);//3
+
+        // ❤ 3.2：element.children。 
+        // 非标准，但各浏览器都支持。
+        // var ul = document.querySelector('ul')
+        // console.log(ul.children); //HTMLCollection(4) [li, li, li, li]
+
+
+
+        // 4.获取第一个子元素节点和最后一个子元素节点
+        // 4.1 firstChild,lastChild
+        // 获取的节点包括了元素节点和文本节点
+        // var ul = document.querySelector('ul')
+        // console.log(ul.firstChild); //#text
+        // console.log(ul.lastChild); //#text
+
+        // 4.2 firstElementChild,lastElementChild
+        // 获得的是‘元素’节点。但该方法只在IE9以上支持。【兼容性】
+        // var ul = document.querySelector('ul')
+        // console.log(ul.firstElementChild);
+        // console.log(ul.lastElementChild);
+
+        // ❤ 4.3 ul.children[0]
+        // 用在实际开发中，无兼容性问题
+        // var ul = document.querySelector('ul')
+        // console.log(ul.children[0]);
+        // console.log(ul.children[ul.children.length - 1]);
+
+
+
+        // 5.获取兄弟节点
+        var middle = document.querySelector('#parent');
+        // 获取的节点包括了元素节点和文本节点
+        console.log(middle.nextSibling); //#text
+        console.log(middle.previousSibling); //#text
+        // 存在兼容性问题，IE9以上才支持
+        console.log(middle.nextElementSibling);
+        console.log(middle.previousElementSibling);
+        // 解决：封装一个兼容性函数
+        function getNextElementSibling(element) {
+            var el = element;
+            while (true) {
+                el = el.nextSibling;
+                if (el.nodeType === 1) {
+                    return el
+                }
+            }
+            return null
+        }
+        console.log(getNextElementSibling(middle));
+
+
+
+
+
+        // 问题：NodeList与HTMLCollection的区别
+        // 伪数组NodeList，没有some,push等方法。只有forEach，keys方法和length属性
+        // HTMLCollection,没有forEach方法，只有length属性
+    </script>
+</body>
+
+</html>
