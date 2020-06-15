@@ -35,10 +35,10 @@
 
         // 方法二：document.getElementsByTagName
         // 注意1：直接使用document，指的是整个文档，所获取的是所有的li标签
-        // 注意2：♥ 获取到的数组是伪数组NodeList，没有some,push等方法。只有forEach，keys方法和length属性
+        // 注意2：♥ 获取到的数组是伪数组HTMLCollection,没有forEach方法，只有length属性
 
-        // var lis = document.getElementsByTagName('li')
-        // console.log(lis); //HTMLCollection(8) [li, li, li, li, li, li, li, li]
+        var lis = document.getElementsByTagName('li')
+        console.log(lis); //HTMLCollection(8) [li, li, li, li, li, li, li, li]
         // var ol = document.getElementById('ol')
         // var ol_lis = ol.getElementsByTagName('li')
         // console.log(ol_lis);
@@ -50,11 +50,11 @@
         // API3:document.querySelectorAll('li')
 
         // 方法四：【特殊情况】获取body元素和html元素
-        var body = document.body
-        console.log(body);
+        // var body = document.body
+        // console.log(body);
 
-        var html = document.documentElement
-        console.log(html);
+        // var html = document.documentElement
+        // console.log(html);
     </script>
 </body>
 

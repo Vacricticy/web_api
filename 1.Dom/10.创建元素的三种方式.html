@@ -21,13 +21,15 @@
         //     document.write("<div>333</div>")
         // }
 
-        // 同上，当页面渲染完毕后调用
+        // 同上，当页面渲染完毕后调用，onload方法会在页面渲染完后调用
         // window.onload = function() {
         //     document.write("<div>333</div>")
         // }
 
+        // 方式二：document.createElement()
+        // 方式三：element.innerHTML
 
-        // 面试：element.createElement()与element.innerHTML那个效率更高
+        // 面试：document.createElement()与element.innerHTML那个效率更高
         var div = document.querySelector('div');
         var start = new Date();
         // 1.采用innerHTML拼接字符串，需要3秒左右

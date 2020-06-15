@@ -24,7 +24,7 @@
         heiheihei
         <strong>balabala</strong>
     </p>
-    <input type="text" value="手机" />
+    <input type="text" placeholder="手机" />
 
     <table>
         <thead>
@@ -88,9 +88,10 @@
         // 实际应用2：
         // 常见的登录注册：输入密码后，点击按钮显示密码并修改图标，再次点击隐藏密码并修改图标
         // ❤ 需要设置一个标记值flag，每次点击时根据不同的flag值做不同的处理
-        // var flag = 0
+        // var flag = false
         // xxx.onclick = function() {
-        //     if (flag === 0) {
+        //     falg = !flag;
+        //     if (flag) {
         //         input.type = 'text';
         //         img.src = '...'
         //         flag = 1;
@@ -116,18 +117,18 @@
         // 通过xxx.style.display='none'和xxx.style.display='block'隐藏和显示元素
 
         // 实际应用2：京东搜索栏，键入输入框，清空原提示文本，输入的内容颜色变深。
-        // 移除文本框，若输入的值为空，则显示提示的文本，且提示的文本颜色变浅
+        // 移出文本框，若输入的值为空，则显示提示的文本，且提示的文本颜色变浅
         // 绑定的事件有输入框聚焦事件onfocus,和移出事件onblur
         var input = document.querySelector('input')
         input.onfocus = function() {
-            if (this.value === '手机') {
-                this.value = ""
+            if (this.placeholder === '手机') {
+                this.placeholder = ""
                 this.style.color = "#333"
             }
         }
         input.onblur = function() {
             if (this.value.trim() === "") {
-                this.value = "手机"
+                this.placeholder = "手机"
                 this.style.color = "#999"
             }
         }
@@ -141,7 +142,7 @@
         // 排他思想原理：先取消所有的样式，再单独为触发的事件源设置样式
 
         // 其他实际应用：
-        // 1.百度点击小图标更换背景图的操作：获取所有的元素，循环绑定事件，将事件源身上的src设置在document.body.style.backgroundImage上
+        // 1.百度点击小图标更换背景图的操作：获取所有的元素，循环绑定事件，将img事件源身上的src设置在document.body.style.backgroundImage上
 
         // 2.新浪财经鼠标经过表格行时颜色变深，离开时颜色恢复
         // 鼠标经过事件onmouseover：添加样式,鼠标离开事件onmouseout：清除样式
@@ -163,12 +164,12 @@
             value.onclick = function() {
                 var flag = true;
                 // 方法一：推荐
-                // for (var i = 0; i < inputs.length; i++) {
-                //     if (!inputs[i].checked) {
-                //         flag = false;
-                //         break;//提升执行效率
-                //     }
-                // };
+                for (var i = 0; i < inputs.length; i++) {
+                    if (!inputs[i].checked) {
+                        flag = false;
+                        break; //提升执行效率
+                    }
+                };
 
                 // 方法二：不推荐,因为这样会循环遍历每一个元素，会降低效率。
                 // inputs.forEach(function(value) {
@@ -177,8 +178,9 @@
                 //     }
                 // })
 
-                // 方法三：不能使用，因为通过querySelectorAll获取到的是伪数组。
-                // 伪数组只有entries,forEach,keys方法，没有some方法
+                // 方法三：不能使用，因为通过querySelectorAll获取到的是伪数组NodeList。
+                // 伪数组只有entries,forEach,keys方法，没有some方法。
+                // 而且该方法可读性不强
                 // flag = !inputs.some(value => {
                 //     return value.checked === false
                 // })

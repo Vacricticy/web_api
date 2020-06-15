@@ -85,6 +85,7 @@
         // 要点1：tab栏样式的切换：排他思想，干掉所有人，再添加自己
         // 要点2：根据tab栏切换时索引值的改变，显示和隐藏对应的div的内容，也要用到排他思想
         var lis = document.querySelectorAll('li')
+        console.log(lis);
         var divs = document.querySelectorAll('.item')
         lis.forEach((value, index) => {
             value.onclick = function() {
