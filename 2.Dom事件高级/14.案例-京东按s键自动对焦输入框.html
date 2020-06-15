@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <script>
+        var input = document.querySelector('input');
+        // 注意：这里不能使用keydown的原因是，键入的s会被立即输入在输入框中
+        // ❤ 一般在实际应用中键盘事件都是用的keyup松开事件
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode === 83) {
+                input.focus()
+            }
+        })
+    </script>
+</body>
+
+</html>

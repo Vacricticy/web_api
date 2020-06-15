@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('keyup', function(e) {
+            // keycode返回的是键的ASCII值，不需要记ASCII的值，可以触发键盘事件获取想要的keyCode的值
+            console.log('keyup', e.keyCode);
+        });
+        // keyup事件和keydown事件是不区分大小写的
+        // keypress事件可以区分大小写
+        document.addEventListener('keypress', function(e) {
+            console.log('keypress', e.keyCode);
+        })
+    </script>
+</body>
+
+</html>

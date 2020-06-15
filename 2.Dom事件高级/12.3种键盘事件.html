@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // keyup：松开键盘触发
+        document.onkeyup = function() {
+            console.log('我松开了');
+        }
+
+        // keypress不能识别功能键，比如ctrl,alt,shift,左右箭头
+        document.addEventListener('keypress', function() {
+            console.log('keypress我按下了');
+        });
+        // keydown按下键盘触发
+        document.addEventListener('keydown', function() {
+            console.log('keydown我按下了');
+        });
+
+        // 三个事件的执行顺序：keydown->keypress->keyup
+    </script>
+</body>
+
+</html>
