@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        // 方式一：传统注册方式
+        // 注意：以on开头,无兼容性问题
+        // 同一元素，同一事件只有最近的事件处理函数有效
+        btns[0].onclick = function() {
+            alert(11)
+        }
+        btns[0].onclick = function() {
+            alert(22)
+        };
+        // 方式二：方法监听注册方式  
+        // 注意：click不带on   【兼容性】IE9以上才支持
+        // 同一元素，同一事件可以添加多个监听器（即事件处理函数）
+        btns[1].addEventListener('click', function() {
+            alert(33)
+        })
+        btns[1].addEventListener('click', function() {
+            alert(44)
+        })
+
+        // 方式三：IE9以前的方式
+        btns[2].attachEvent('onclick', function() {
+            alert(55)
+        })
+    </script>
+</body>
+
+</html>

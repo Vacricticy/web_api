@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul')
+        ul.addEventListener('click', function(e) {
+            // 1.  e.target指向的是触发事件的对象（元素）
+            console.log(e.target); //<li>111</li>
+            // 2.  this指向的是绑定事件的元素
+            console.log(this); //<ul>...</ul>
+            // 3.  e.currentTarget同this一样，但一般不这么使用
+            console.log(e.currentTarget); //<ul>...</ul>
+        })
+
+        // e.target兼容性处理：兼容IE6/7/8
+        // ul.onclick = function(e) {
+        //     e = e || window.event
+        //     var target = e.target || e.srcElement
+        //     console.log(target);
+        // }
+
+        ul.addEventListener('mouseover', function(e) {
+            // 4.  e.type指向的是事件的类型
+            console.log(e.type);
+        })
+        ul.addEventListener('mouseout', function(e) {
+            console.log(e.type);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        html,
+        body {
+            margin: auto auto;
+        }
+        
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            position: relative;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">
+
+        </div>
+    </div>
+    <script>
+        var father = document.querySelector(".father")
+        father.addEventListener('click', function() {
+            alert('father')
+        })
+
+        var son = document.querySelector('.son')
+        son.addEventListener('click', function(e) {
+            alert('son')
+            e.stopPropagation()
+        })
+
+        // 阻止事件冒泡，兼容性写法
+        son.onclick = function(e) {
+            if (e && e.stopPropagation) {
+                e.stopPropagation()
+            } else {
+                window.event.cancelBubble = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

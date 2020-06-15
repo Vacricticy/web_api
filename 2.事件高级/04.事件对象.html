@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <script>
+        var btns = document.querySelectorAll('button')
+        btns[0].onclick = function(e) {
+            // e兼容性问题：兼容IE6/7/8。 
+            // IE9之前是通过window.event来获取事件对象
+            e = e || window.event
+            console.log(e); //MouseEvent {isTrusted: true, screenX: 10, screenY: 132, clientX: 10, clientY: 30, …}
+        };
+
+        btns[1].addEventListener('click', function(e) {
+            console.log(e);
+        });
+
+        // 事件对象是与事件相关的一系列数据的集合，分为鼠标事件对象和键盘事件对象。
+
+        // 事件对象中包括的属性有事件源和事件类型等。
+        // 在鼠标事件对象中还包括鼠标坐标。
+        // 在键盘事件对象中还包括按下的键。
+    </script>
+</body>
+
+</html>

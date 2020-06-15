@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1111</li>
+        <li>1111</li>
+        <li>1111</li>
+        <li>1111</li>
+        <li>1111</li>
+        <li>1111</li>
+        <li>1111</li>
+    </ul>
+    <script>
+        // 事件委托也叫事件代理，事件委派
+        // 面试：事件委托的原理？
+        // 不在子节点单独设置事件监听器，而将事件监听器设置在父节点上，再利用冒泡原理影响每一个子节点
+        // 事件委托的作用：只操作一次Dom，提高了程序的性能。
+        var ul = document.querySelector('ul');
+        // 应用：实现移入li背景色改变的功能：
+        // 利用事件委托，原先需要单独为每个li绑定mouseover事件，但现在只需要为父节点绑定事件
+        // 当移入li时，通过事件冒泡，会触发父节点ul的事件处理函数
+        ul.addEventListener('mouseover', function(e) {
+            lis = this.children
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].style.backgroundColor = ""
+            }
+            // 若移入的是ul，则不改变背景色
+            if (e.target != this) {
+                e.target.style.backgroundColor = "yellow"
+            }
+
+        })
+    </script>
+</body>
+
+</html>

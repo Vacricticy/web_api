@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('click', function(e) {
+            // 获取鼠标在可视区的坐标,可视区即展示在用户面前的页面区域
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log('------------');
+            // 获取鼠标在整个html页面的坐标
+            console.log(e.pageX);
+            console.log(e.pageY);
+            console.log('------------');
+            // 获取鼠标在电脑屏幕的坐标，即整个电脑屏幕，15寸这个
+            console.log(e.screenX);
+            console.log(e.screenY);
+        })
+    </script>
+</body>
+
+</html>

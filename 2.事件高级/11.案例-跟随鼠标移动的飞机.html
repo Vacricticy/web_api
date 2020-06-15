@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button>开启涂鸦模式</button>
+    <img src="飞机.svg" alt="">
+    <script>
+        // 正常模式--------实际应用：淘宝查看商品图片时，鼠标下面会跟随一个框框表示放大的范围
+        var img = document.querySelector('img')
+            // 使用的是鼠标移动事件mousemove
+        document.addEventListener('mousemove', function(e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            img.style.left = x - 65 + 'px';
+            img.style.top = y - 35 + 'px'
+        })
+
+        // 涂鸦模式
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', fn)
+
+        function fn() {
+            var img = document.querySelector('img')
+                // 使用的是鼠标移动事件mousemove
+            document.addEventListener('mousemove', function(e) {
+                var x = e.pageX;
+                var y = e.pageY;
+                // img.style.left = x - 65 + 'px';
+                // img.style.top = y - 35 + 'px'
+                var newImg = document.createElement('img')
+                newImg.src = "飞机.svg"
+                newImg.style.position = 'absolute';
+                newImg.style.left = x - 65 + 'px';
+                newImg.style.top = y - 35 + 'px'
+                console.log(newImg);
+                document.body.appendChild(newImg)
+            })
+        }
+    </script>
+</body>
+
+</html>
