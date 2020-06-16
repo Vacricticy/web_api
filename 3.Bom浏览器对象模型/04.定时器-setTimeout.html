@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.创建定时器
+        var time1 = setTimeout(function() {
+            console.log('balabala');
+        }, 1000)
+
+
+        var time2 = setTimeout(callback, 2000)
+
+        function callback() {
+            console.log('balabala2');
+        }
+
+
+        // 2.停止定时器：
+        clearTimeout(time2)
+
+        // 3.回调函数的简单理解：上一件事情干完后，再回头调用这个函数
+        // 比如element.addEventListener('click',function(){}) 里面的function就是回调函数
+
+        // 4.setTimeout的实际应用：几秒后关闭广告
+    </script>
+</body>
+
+</html>

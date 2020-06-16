@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击按钮跳转链接</button>
+    <button>刷新当前页面</button>
+    <div></div>
+    <script>
+        var btns = document.querySelectorAll('button')
+        var div = document.querySelector('div')
+
+        btns[0].onclick = function() {
+            var i = 2
+            fn()
+            var time = setInterval(fn, 1000)
+
+            function fn() {
+                div.innerHTML = i + "后自动跳往主页"
+                i--
+                if (i === 0) {
+                    // location.href = "https://www.baidu.com"
+                    // location.assign("https://www.baidu.com") //重定向页面，与location.href一样，会记录历史，能后退页面
+                    location.replace("https://www.baidu.com") //不记录历史，不能后退页面
+                    clearInterval(time)
+                }
+            }
+        }
+        btns[1].onclick = function() {
+            location.reload() //刷新当前页面，相当于F5
+            location.reload(true); //强制刷新，直接从服务器获取数据，不从浏览器缓存中取数据,相当于Ctrl+F5
+
+            // ❤ 日常开发中，若发现代码正确运行结果不正确，可以通过Ctrl+F5进行强制刷新，避免浏览器缓存的影响
+        }
+    </script>
+</body>
+
+</html>

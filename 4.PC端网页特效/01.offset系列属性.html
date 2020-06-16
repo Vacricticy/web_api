@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: green;
+            margin: 100px
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            margin: 50px;
+        }
+        
+        .w {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin: 50px;
+            border: 10px solid orange;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grandfather">
+        <div class="father">
+            <div class="son">
+            </div>
+        </div>
+    </div>
+
+    <div class="w"></div>
+    <script>
+        var father = document.querySelector('.father')
+        var son = document.querySelector('.son')
+        console.log(father.offsetTop);
+        console.log(father.offsetLeft);
+        // 1.offsetTop返回的是相对于带有定位的父元素的偏移量，如果父元素没有定位，则返回的是相对于body的偏移量
+        console.log(son.offsetTop);
+        console.log(son.offsetLeft);
+
+        // 2.offsetWidth得到的元素大小包括：width+padding+border
+        var w = document.querySelector('.w')
+        console.log(w.offsetWidth);
+        console.log(w.offsetHeight);
+
+        // 3.offsetParent返回的是带有定位的父元素,若父元素没有定位，则返回的是body元素
+        // parentNode不管父元素有没有定位，返回的都是父元素
+        console.log(son.offsetParent);
+        console.log(son.parentNode);
+    </script>
+</body>
+
+</html>

@@ -38,13 +38,13 @@
     </div>
     <script>
         // 什么叫Dom事件流？
-        // 事件发生时会在元素节点之间按照特定的顺序传播，整个过程分为捕获阶段，目标阶段和冒泡阶段，这个传播过程即Dom事件流
+        // 事件发生时会在元素节点之间按照特定的顺序传播，整个过程分为捕获阶段，目标阶段和冒泡阶段，这个传播过程叫做Dom事件流
 
 
         // addEventListener的第三个参数默认是false，表示在该事件的处理函数只会在冒泡阶段被调用。
         // 若改为true,则事件处理函数只能在捕获阶段被调用。
 
-        // onclick和attachEvent绑定的事件中事件的处理函数只能在冒泡阶段被调用。
+        // onclick和attachEvent绑定的事件中事件处理函数只能在冒泡阶段被调用。
 
 
 
@@ -59,7 +59,7 @@
         //     alert('son')
         // })
 
-        // 弹出顺序：son->father
+        // 提示框弹出顺序：son->father
 
 
         // 2. 改为在捕获阶段调用事件处理函数
@@ -91,7 +91,9 @@
         son.addEventListener('click', function() {
             alert('son')
         }, true)
-
+        son.addEventListener('click', function() {
+            alert('son2')
+        })
         document.onclick = function() {
             alert('onclick之document')
         }
@@ -106,7 +108,7 @@
         }, true)
 
 
-        //弹出顺序：document1->document2->son->father->onclick之document->document
+        //弹出顺序：document1->document2->son->son2->father->onclick之document->document
 
 
         // js代码中只能执行捕获和冒泡阶段其中的一个。
@@ -116,7 +118,7 @@
 
 
 
-        // ❤总：当触发某一事件后，会依次经历捕获阶段和冒泡阶段，在这两个阶段中的相关元素只要包含该种事件类型的处理函数，则会被调用。
+        // ❤总：当触发某一事件后，会依次经历捕获阶段和冒泡阶段，在这两个阶段中的相关元素只要绑定了该种事件类型的处理函数，则会被调用。
     </script>
 </body>
 

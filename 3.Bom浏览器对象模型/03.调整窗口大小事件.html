@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+        
+        .box {
+            display: flex;
+        }
+        
+        .content {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        window.addEventListener('load', function() {
+            var box3 = document.querySelector('.box3');
+            // ❤ 在css3之前，onresize事件可以用来实现响应式布局
+            window.addEventListener('resize', function() {
+                // ❤ window.innerWidth指的是可视区域的宽
+                console.log('window.innerWidth', window.innerWidth);
+                if (window.innerWidth < 500) {
+                    box3.style.display = "none"
+                } else {
+                    box3.style.display = "block"
+                }
+            })
+        })
+    </script>
+    <div class="box">
+        <div class="box1 content">区域1</div>
+        <div class="box2 content">区域2</div>
+        <div class="box3 content">广告区域</div>
+    </div>
+</body>
+
+</html>

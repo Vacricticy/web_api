@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="page2.html">点击跳转</a>
+    <button>-></button>
+    <script>
+        var btn = document.querySelector('button')
+        btn.onclick = function() {
+            // history.forward()
+            history.go(1)
+        }
+
+
+        // history的三个功能在实际中很少用到，一般用在OA办公系统中
+        // history.forward()
+        // history.back()
+        // history.go()
+    </script>
+</body>
+
+</html>

@@ -23,9 +23,9 @@
         // 不在子节点单独设置事件监听器，而将事件监听器设置在父节点上，再利用冒泡原理影响每一个子节点
         // 事件委托的作用：只操作一次Dom，提高了程序的性能。
         var ul = document.querySelector('ul');
-        // 应用：实现移入li背景色改变的功能：
+        // 应用：实现移入li标签背景色改变的功能：
         // 利用事件委托，原先需要单独为每个li绑定mouseover事件，但现在只需要为父节点绑定事件
-        // 当移入li时，通过事件冒泡，会触发父节点ul的事件处理函数
+        // 当移入li时，通过事件冒泡，会触发父节点ul的事件处理函数，然后通过e.target可以获取具体是哪个li触发了事件
         ul.addEventListener('mouseover', function(e) {
             lis = this.children
             for (var i = 0; i < lis.length; i++) {

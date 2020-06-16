@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100px;height: 100px;padding: 10px;border: 10px solid yellow;"></div>
+    <script>
+        var div = document.querySelector('div')
+
+        // 区别1：offsetWidth可以获取任意样式表中的样式值，包括行内样式，内嵌样式，外部样式
+        // 但element.style只能获取行内的样式
+
+
+        // 区别2：offsetWidth获取的是数字型的，style获取的带有px后缀
+
+        // 区别3：offsetWidth获取的元素大小包括了width,padding,border。
+        // 而style.width获取的元素大小只有width
+        console.log(div.offsetWidth); //140
+        console.log(div.style.width); //100px
+
+        // 区别4：offsetWidth是只读属性，而style可读可写
+
+
+        // 总结： 获取元素的大小位置，用offset。修改元素的值， 用style
+    </script>
+</body>
+
+</html>

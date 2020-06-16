@@ -13,8 +13,8 @@
     <script>
         var btns = document.querySelectorAll('button')
         btns[0].onclick = function(e) {
-            // e兼容性问题：兼容IE6/7/8。 
-            // IE9之前是通过window.event来获取事件对象
+            // 获取事件对象e的兼容性问题：兼容IE6/7/8。 
+            // IE9之前是通过window.event来获取事件对象的
             e = e || window.event
             console.log(e); //MouseEvent {isTrusted: true, screenX: 10, screenY: 132, clientX: 10, clientY: 30, …}
         };
@@ -27,7 +27,7 @@
 
         // 事件对象中包括的属性有事件源和事件类型等。
         // 在鼠标事件对象中还包括鼠标坐标。
-        // 在键盘事件对象中还包括按下的键。
+        // 在键盘事件对象中还包括按下键的ASCII码。
     </script>
 </body>
 

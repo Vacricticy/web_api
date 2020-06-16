@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入手机号">
+    <button>发送验证码</button>
+</body>
+
+</html>
+<script>
+    window.addEventListener('load', function() {
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', function() {
+            var i = 5
+            var time = null;
+
+            fn.call(this) //点击后立马调用一次函数
+            time = setInterval(fn.bind(this), 1000) //继续调用函数
+
+            function fn() {
+                this.disabled = true
+                this.innerHTML = i + '秒后再次获取'
+                i--
+                if (i == -1) {
+                    clearInterval(time)
+                    this.innerHTML = "发送验证码"
+                    this.disabled = false
+                }
+            }
+        })
+
+    })
+</script>

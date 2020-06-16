@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // location.search得到的是带有？的字符串。?uname=liuxiaokang
+        var params = location.search.substr(1); //uname=liuxiaokang
+        var arrs = params.split('=')
+        var div = document.querySelector('div')
+        div.innerHTML = arrs[1] + '欢迎您'
+    </script>
+</body>
+
+</html>

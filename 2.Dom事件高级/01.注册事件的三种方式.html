@@ -15,7 +15,7 @@
         var btns = document.querySelectorAll('button');
         // 方式一：传统注册方式
         // 注意：以on开头,无兼容性问题
-        // 同一元素，同一事件只有最近的事件处理函数有效
+        // 同一元素，同一事件处理函数，只有最近的是有效的
         btns[0].onclick = function() {
             alert(11)
         }
