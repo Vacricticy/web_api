@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+        
+        .sliderbar {
+            position: fixed;
+            right: 0;
+            bottom: 100px;
+            width: 40px;
+            height: 40px;
+            /* 文字居中 */
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        .con {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+
+<body>
+    <div class="sliderbar">
+        <span><-</span>
+        <div class="con">问题反馈</div>
+    </div>
+
+    <script>
+        var sliderbar = document.querySelector('.sliderbar')
+        var div = document.querySelector('.con')
+        sliderbar.addEventListener('mouseenter', function() {
+            animate(div, -160, function() {
+                // 注意这里回调函数的实际应用，用于动画结束后的操作     
+                sliderbar.children[0].innerHTML = "->"
+            })
+        })
+        sliderbar.addEventListener('mouseleave', function() {
+            animate(div, 0, function() {
+                sliderbar.children[0].innerHTML = "<-"
+            })
+        })
+    </script>
+</body>
+
+</html>

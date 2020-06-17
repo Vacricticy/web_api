@@ -14,12 +14,10 @@
     <link rel="stylesheet" href="css/common.css">
     <!-- 引入 首页的css文件 -->
     <link rel="stylesheet" href="css/index.css">
-    <script>
-        //navigator包含了用户浏览器的信息，通过navigator.userAgent可以获取请求路径中user-agent的值，即客户端的设备信息
-        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-            window.location.href = "../H5/index.html"; //手机
-        }
-    </script>
+    <!-- 这个animate.js 必须写到 index.js的上面引入 -->
+    <script src="js/animate.js"></script>
+    <!-- 引入我们首页的js文件 -->
+    <script src="js/index.js"></script>
 </head>
 
 <body>
@@ -137,24 +135,31 @@
     <div class="w">
         <div class="main">
             <div class="focus fl">
-                <a href="#" class="arrow-l">
-                    < </a>
-                        <a href="#" class="arrow-r">  </a>
-                        <ul>
-                            <li>
-                                <a href="#"><img src="upload/focus.jpg" alt=""></a>
-                            </li>
-                        </ul>
-                        <ol class="circle">
-                            <li></li>
-                            <li class="current"></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ol>
+                <!-- 左侧按钮 -->
+                <a href="javascript:;" class="arrow-l">
+                    &lt;
+                 </a>
+                <!-- 右侧按钮 -->
+                <a href="javascript:;" class="arrow-r">  </a>
+                <!-- 核心的滚动区域 -->
+                <ul>
+                    <li>
+                        <a href="#"><img src="upload/focus.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="upload/focus1.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="upload/focus2.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="upload/focus3.jpg" alt=""></a>
+                    </li>
+                </ul>
+                <!-- 小圆圈 -->
+                <ol class="circle">
+
+                </ol>
             </div>
             <div class="newsflash fr">
                 <div class="news">

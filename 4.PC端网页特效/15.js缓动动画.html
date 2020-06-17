@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button>移动至500处</button>
+    <button>移动至800处</button>
+    <div></div>
+    <script>
+        // 缓动动画的基本原理
+        // 公式：（目标位置-现在位置）/10
+        // (100-0)/10=10
+        // (100-10)/10=9
+        // (100-19)/10=8.1
+        // 当前位置等于目标位置时，停止定时器
+
+        var div = document.querySelector('div')
+        var btns = document.querySelectorAll('button')
+
+        function move(element, target, callback) {
+            clearInterval(element.move)
+            element.move = setInterval(function() {
+                // 移动的距离通过公式求得，逐渐减少
+                // ❤ 问题1：step为小数时，位数的问题可能会导致移动的步长不准确。
+                // 解决：转化为整数处理,且必须向上取整
+                var step = (target - element.offsetLeft) / 10
+                console.log(`target:${target} offsetLeft:${element.offsetLeft}  step:${step}`);
+
+                // 若移动方向为正，则step>0,应该向上取整；若移动方向为负，则step<0,应该向下取整
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                // 注意： 这里为了使元素能够原路返回， 必须使用 === ，而不能使用 >=
+                if (element.offsetLeft === target) {
+                    clearInterval(element.move)
+                    callback && callback()
+                }
+
+                element.style.left = element.offsetLeft + step + 'px'
+
+                console.log(element.style.left);
+
+            }, 15)
+
+        }
+        btns[0].addEventListener('click', function() {
+            move(div, 500, function() {
+                div.style.backgroundColor = "orange"
+            })
+        })
+        btns[1].addEventListener('click', function() {
+            move(div, 800, function() {
+                div.style.backgroundColor = "yellow"
+            })
+        })
+    </script>
+</body>
+
+</html>

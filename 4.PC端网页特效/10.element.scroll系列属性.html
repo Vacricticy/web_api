@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            background-color: yellow;
+            border: 1px solid blue;
+            padding: 20px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        // scrollHeight返回的是内容的高度，不包含边框,但包含padding
+        // clentHeight返回的是height+padding
+        console.log(div.scrollHeight); //333+20=353
+        console.log(div.clientHeight); //200+40=240
+
+        div.addEventListener('scroll', function() {
+            //❤  scrollTop返回的是向下滚动后，上面被卷去的距离
+            console.log(div.scrollTop);
+        })
+    </script>
+</body>
+
+</html>

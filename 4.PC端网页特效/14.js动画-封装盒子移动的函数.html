@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+        
+        span {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <button>按钮</button>
+    <div></div>
+    <span>balabala</span>
+
+    <script>
+        // ❤ js动画的核心原理：通过setInterval不断的移动盒子的距离
+
+        // 注意：使用动画的元素必须添加定位
+        var div = document.querySelector('div')
+        var span = document.querySelector('span')
+        var btn = document.querySelector('button')
+
+        function animate(element, target) {
+            // var会单独开辟内存空间,将time定时器绑定在元素对象上可以减少开销
+
+            // bug:若连续多次点击按钮，会不断的开启新的定时器，导致动画的速度不断的加快
+            // 解决：每次调用前都清除上一次的动画
+            clearInterval(element.time)
+            element.time = setInterval(function() {
+                if (element.offsetLeft > target) {
+                    clearInterval(element.time)
+                }
+                element.style.left = element.offsetLeft + 1 + 'px';
+            }, 10)
+        }
+
+
+        animate(span, 100)
+        btn.addEventListener('click', function() {
+            animate(div, 300)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 方法一：(function(){})()
+        (function() {
+            var name = 'liusir'
+            console.log(name);
+        })(); //注意若有两个立即执行函数连在一起，则需要用;进行分割
+
+        // 方法二：(function(){}())
+        (function(a, b) {
+            var name = 'kangsir'
+            console.log(name);
+            console.log(a + b);
+        }(1, 2))
+
+        // 立即执行函数的作用
+        // 创建一个独立的作用域，可以避免命名冲突的问题
+    </script>
+</body>
+
+</html>

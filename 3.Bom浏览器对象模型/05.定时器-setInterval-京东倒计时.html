@@ -45,12 +45,12 @@
             function leftTime() {
                 var now = new Date()
                 var left = (finalTime - now) / 1000; //相减后得到的是毫秒数，只能通过计算得到小时，分钟，秒数
-                var h = left / 60 / 60
-                var m = (left - parseInt(h) * 60 * 60) / 60
-                var s = left - parseInt(h) * 60 * 60 - parseInt(m) * 60
-                hour.innerHTML = parseInt(h).toString().padStart(2, '0') + 'h'
-                minute.innerHTML = parseInt(m).toString().padStart(2, '0') + 'm'
-                second.innerHTML = parseInt(s).toString().padStart(2, '0') + 's'
+                var h = parseInt(left / 60 / 60)
+                var m = parseInt((left - h * 60 * 60) / 60)
+                var s = parseInt(left - h * 60 * 60 - m * 60)
+                hour.innerHTML = h.toString().padStart(2, '0') + 'h'
+                minute.innerHTML = m.toString().padStart(2, '0') + 'm'
+                second.innerHTML = s.toString().padStart(2, '0') + 's'
             }
             leftTime() //防止第一次刷新有空白
             countDown = setInterval(leftTime, 1000)

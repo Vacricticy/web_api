@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .m {
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            height: 100px;
+            background-color: yellow;
+        }
+        
+        .banner {
+            height: 100px;
+            background-color: green;
+        }
+        
+        .main1 {
+            height: 1000px;
+            background-color: blue;
+        }
+        
+        .main2 {
+            height: 1000px;
+            background-color: blue;
+        }
+        
+        .sliderBar {
+            height: 150px;
+            width: 60px;
+            background-color: orangered;
+            border-radius: 10px;
+            position: absolute;
+            top: 300px;
+            right: 0;
+            line-height: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sliderBar">
+        <div class="content" style="color: aliceblue;">主页1</div>
+        <div class="goBack" style="cursor: pointer;display: none;">回顶部</div>
+    </div>
+    <div class="header m">头部区域</div>
+    <div class="banner m">banner区域</div>
+    <div class="main1 m">主体部分1</div>
+    <div class="main2 m">主体部分2</div>
+</body>
+<script>
+    var sliderBar = document.querySelector('.sliderBar')
+    var main1 = document.querySelector('.main1')
+    var banner = document.querySelector('.banner')
+    var goBack = document.querySelector('.goBack')
+    var main2 = document.querySelector('.main2')
+    var showContent = document.querySelector('.content')
+
+    // 获取banner距离body开头的距离
+    var bannerTop = banner.offsetTop;
+
+    // 获取侧边栏与banner的距离，其距离用于侧边栏为固定定位时相对于顶部的距离
+    var silderToBanner = sliderBar.offsetTop - bannerTop
+
+    // 获取侧边栏初始与body顶部的距离
+    var sliderDefaultTop = sliderBar.offsetTop;
+
+    var main1Top = main1.offsetTop;
+    var main2Top = main2.offsetTop;
+    // 1.为document绑定scroll事件
+    document.addEventListener('scroll', function() {
+        // 2.通过window.pageYOffset获取页面被卷入的距离
+        // 3.卷入的距离大于bannerTop时，将侧边栏设置为固定布局，top设置为侧边栏初始与body顶部的距离
+        if (window.pageYOffset >= bannerTop) {
+            sliderBar.style.position = "fixed"
+            sliderBar.style.top = silderToBanner + 'px'
+
+        } else {
+            sliderBar.style.position = "absolute"
+            sliderBar.style.top = sliderDefaultTop + 'px'
+        }
+        // 4.卷入的距离大于主体部分1时，将“返回顶部”的元素设置为可见
+        if (window.pageYOffset >= main1Top) {
+            goBack.style.display = "block"
+        } else {
+            goBack.style.display = "none"
+        }
+        if (window.pageYOffset >= main2Top) {
+            showContent.innerHTML = "主页2"
+        } else {
+            showContent.innerHTML = "主页1"
+        }
+    })
+</script>
+
+</html>

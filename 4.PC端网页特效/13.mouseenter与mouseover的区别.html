@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            height: 200px;
+            width: 200px;
+            background-color: yellow;
+        }
+        
+        .son {
+            height: 100px;
+            width: 100px;
+            background-color: orange;
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        var father = document.querySelector('.father');
+        // 1.mouseover会打印两次11
+        // 原因：鼠标在经过子元素时，还会再次触发mouseover事件，通过冒泡被父元素捕获后，会再次调用事件处理函数
+        // father.addEventListener('mouseover', function() {
+        //     console.log(11);
+        // })
+
+        // 2.mouseenter只会打印一次11，因为mouseenter不存在冒泡
+        father.addEventListener('mouseenter', function() {
+            console.log(11);
+        })
+
+        // 3.注意：mouseover与mouseout搭配
+        // mouserenter与mouseleave搭配
+    </script>
+</body>
+
+</html>

@@ -174,12 +174,12 @@
             document.addEventListener('mousemove', move)
 
             function move(e) {
-                // 步骤二：模态框的left和top等于鼠标在页面的坐标减去鼠标在盒子内的坐标
+                // ❤ 步骤二：模态框的left和top等于鼠标在页面的坐标减去鼠标在盒子内的坐标
                 // 注意：一定要加上px
                 login.style.left = e.pageX - x + 'px';
                 login.style.top = e.pageY - y + 'px';
             }
-            // 取消整个页面的鼠标移动事件
+            // 步骤三：鼠标松开时取消整个页面的鼠标移动事件
             document.addEventListener('mouseup', function(e) {
                 document.removeEventListener('mousemove', move)
             })

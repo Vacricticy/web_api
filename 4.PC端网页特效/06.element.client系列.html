@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            border: 1px solid blue;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        // clientWidth包含width,padding,但不包含border
+        console.log(div.clientWidth); //220px  
+        // clientLeft获取左边框的宽度
+        console.log(div.clientLeft); //1px
+        // pffsetWidth包含width
+        console.log(div.offsetWidth); //222px
+    </script>
+</body>
+
+</html>
