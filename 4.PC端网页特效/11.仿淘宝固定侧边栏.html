@@ -96,7 +96,25 @@
         } else {
             showContent.innerHTML = "主页1"
         }
+        // 返回顶部
+        goBack.addEventListener('click', function() {
+            animate(window, 0)
+        })
     })
+
+    function animate(element, target, callback) {
+        clearInterval(element.move)
+        element.move = setInterval(function() {
+            var step = (target - element.pageYOffset) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (element.pageYOffset === target) {
+                clearInterval(element.move);
+                callback && callback()
+            }
+            // 通过window.scroll滚动窗口到指定位置,注意：这里不需要px
+            window.scroll(0, element.pageYOffset + step)
+        }, 15)
+    }
 </script>
 
 </html>
