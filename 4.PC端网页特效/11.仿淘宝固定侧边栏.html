@@ -76,7 +76,7 @@
     // 1.为document绑定scroll事件
     document.addEventListener('scroll', function() {
         // 2.通过window.pageYOffset获取页面被卷入的距离
-        // 3.卷入的距离大于bannerTop时，将侧边栏设置为固定布局，top设置为侧边栏初始与body顶部的距离
+        // 3.卷入的距离大于bannerTop时，将侧边栏设置为固定布局，top设置为侧边栏初始与banner的距离
         if (window.pageYOffset >= bannerTop) {
             sliderBar.style.position = "fixed"
             sliderBar.style.top = silderToBanner + 'px'

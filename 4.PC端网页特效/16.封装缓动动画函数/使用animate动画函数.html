@@ -47,6 +47,7 @@
         var sliderbar = document.querySelector('.sliderbar')
         var div = document.querySelector('.con')
         sliderbar.addEventListener('mouseenter', function() {
+            // 注意：这里的-160和0都是相对于父元素的偏移量，而不是相对于body的
             animate(div, -160, function() {
                 // 注意这里回调函数的实际应用，用于动画结束后的操作     
                 sliderbar.children[0].innerHTML = "->"

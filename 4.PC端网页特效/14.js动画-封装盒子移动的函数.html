@@ -41,13 +41,15 @@
         function animate(element, target) {
             // var会单独开辟内存空间,将time定时器绑定在元素对象上可以减少开销
 
-            // bug:若连续多次点击按钮，会不断的开启新的定时器，导致动画的速度不断的加快
+            // 步骤三：bug解决:若连续多次点击按钮，会不断的开启新的定时器，导致动画的速度不断的加快
             // 解决：每次调用前都清除上一次的动画
             clearInterval(element.time)
             element.time = setInterval(function() {
+                // 步骤二：
                 if (element.offsetLeft > target) {
                     clearInterval(element.time)
                 }
+                // 步骤一：
                 element.style.left = element.offsetLeft + 1 + 'px';
             }, 10)
         }

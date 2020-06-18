@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
         .father {
-            position: relative;
+            /* position: relative; */
             width: 400px;
             height: 400px;
             background-color: green;
@@ -29,6 +29,14 @@
             border: 10px solid orange;
             padding: 10px;
         }
+        
+        .grandfather {
+            position: relative;
+            width: 800px;
+            height: 800px;
+            background-color: black;
+            margin: 80px;
+        }
     </style>
 </head>
 
@@ -44,21 +52,25 @@
     <script>
         var father = document.querySelector('.father')
         var son = document.querySelector('.son')
-        console.log(father.offsetTop);
-        console.log(father.offsetLeft);
-        // 1.offsetTop返回的是相对于带有定位的父元素的偏移量，如果父元素没有定位，则返回的是相对于body的偏移量
-        console.log(son.offsetTop);
-        console.log(son.offsetLeft);
+
+        // 1.offsetTop返回的是相对于带有‘定位’的父元素的偏移量
+        // 如果父元素没有定位，则去找父父元素，直到找到body身上。若都没有，则返回的是相对于body的偏移量
+
+        console.log(father.offsetTop); //0
+        console.log(father.offsetLeft); //100
+
+        console.log(son.offsetTop); //0
+        console.log(son.offsetLeft); //150
 
         // 2.offsetWidth得到的元素大小包括：width+padding+border
         var w = document.querySelector('.w')
         console.log(w.offsetWidth);
         console.log(w.offsetHeight);
 
-        // 3.offsetParent返回的是带有定位的父元素,若父元素没有定位，则返回的是body元素
+        // 3.offsetParent返回的是带有定位的父元素,若父元素没有定位，则查看父父元素，直到body。
         // parentNode不管父元素有没有定位，返回的都是父元素
-        console.log(son.offsetParent);
-        console.log(son.parentNode);
+        console.log(son.offsetParent); // <div class="grandfather"></div>
+        console.log(son.parentNode); //< div class="father"></div>
     </script>
 </body>
 
