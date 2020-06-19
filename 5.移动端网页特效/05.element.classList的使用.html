@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="apple banana"></div>
+    <button>开关灯</button>
+    <script>
+        // element.classList是html5的新api，IE10以上才支持，不过在手机端浏览器不需要考虑兼容性问题
+        var div = document.querySelector('div')
+        console.log(div.className); //apple banana
+        console.log(div.classList); //DOMTokenList(2) ["apple", "banana", value: "apple banana"]
+        console.log(div.classList[0]); //apple
+
+        // 添加类名
+        div.classList.add('orange')
+        console.log(div.classList);
+
+        // 移除类名
+        div.classList.remove('apple')
+        console.log(div.classList);
+
+        // ❤ 切换类，若元素身上有这个类，则删除这个类。若没有，则添加这个类。
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', function() {
+            // 注意：类名前面不加.
+            document.body.classList.toggle('bg')
+        })
+    </script>
+</body>
+
+</html>
