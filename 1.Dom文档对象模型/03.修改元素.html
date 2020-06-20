@@ -77,28 +77,27 @@
         // 2.修改元素的属性
         // src,href,id,alt,title
 
+        // 实际应用1：根据早中晚来显示不同的问候语
+        // 获取当前时间的小时数，判断<12 | >18,再修改Img标签的对应的src属性        
+
         // 3.修改表单的属性
         // value,disabled,type,checked,selected
         // input.value
         // button.disabled
 
-        // 实际应用1：根据早中晚来显示不同的问候语
-        // 获取当前时间的小时数，判断<12 | >18,再修改Img标签的对应的src属性
-
-        // 实际应用2：
+        // 实际应用1：
         // 常见的登录注册：输入密码后，点击按钮显示密码并修改图标，再次点击隐藏密码并修改图标
-        // ❤ ❤ 对于点击一个按钮，但有多种不同状态的情况，需要设计一个标记值flag来进行状态的更改
+        // ❤ ❤ 对于点击一个按钮，但有多种不同状态的情况，需要设计一个标记值flag来进行状态的更改，即每点击一次，都要修改flag的值。
+        // 但对于只有两个状态的情况来说，且恰巧这种两种状态只是为了更改样式，此时可以通过element.classList.toogle()方法来选择使用或删除该样式
         // var flag = false
         // xxx.onclick = function() {
         //     falg = !flag;
         //     if (flag) {
         //         input.type = 'text';
         //         img.src = '...'
-        //         flag = 1;
         //     } else {
         //         input.type = 'password'
         //         img.src = ''
-        //         flag = 0
         //     }
         // }
 
