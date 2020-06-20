@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="uname">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="delete">删除数据</button>
+    <button class="delAll">删除所有数据</button>
+    <script>
+        // 生命周期是永久存在的，除非手动删除。即使关闭浏览器还是可以获取到。
+        // 同一浏览器可以多窗口页面实现数据共享
+
+        var input = document.querySelector('input')
+        var setBtn = document.querySelector('.set')
+        var getBtn = document.querySelector('.get')
+        var deleteBtn = document.querySelector('.delete')
+        var delAll = document.querySelector('.delAll')
+
+
+        setBtn.addEventListener('click', function() {
+            // 存储数据
+            localStorage.setItem('uname', input.value)
+        })
+        getBtn.addEventListener('click', function() {
+            // 获取数据
+            console.log(localStorage.getItem('uname'));
+        })
+        deleteBtn.addEventListener('click', function() {
+            // 删除数据
+            localStorage.removeItem('uname')
+
+        })
+        delAll.addEventListener('click', function() {
+            // 删除所有数据
+            localStorage.clear()
+        })
+    </script>
+</body>
+
+</html>

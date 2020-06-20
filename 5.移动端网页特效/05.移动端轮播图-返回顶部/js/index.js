@@ -1,3 +1,4 @@
+// 功能1：轮播图
 // 要点1：自动播放
 // 使用translate移动，添加过渡效果
 
@@ -9,6 +10,8 @@
 // 要点4：手指滑动轮播图
 // 注意：手指滑动的时候要停止计时器
 // 根据手指的滑动距离设置是否滑动到想要的模块
+
+// 功能2：点击返回顶部
 
 window.addEventListener('load', function() {
     var focus = document.querySelector('.focus')
@@ -100,4 +103,20 @@ window.addEventListener('load', function() {
         }, 2000)
 
     })
+
+
+
+    var nav = document.querySelector('nav')
+    var goBack = document.querySelector('.goBack')
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset >= nav.offsetTop) {
+            goBack.style.display = "block"
+        } else {
+            goBack.style.display = "none"
+        }
+    })
+    goBack.addEventListener('click', function() {
+        window.scroll(0, 0)
+    })
+
 })

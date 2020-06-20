@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="uname">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="delete">删除数据</button>
+    <button class="delAll">删除所有数据</button>
+    <script>
+        // sessionStorage的生命周期到整个页面关闭才结束
+
+        // F12->在Application中的Session Storage中可以查看到本地存储的数据
+
+        var input = document.querySelector('input')
+        var setBtn = document.querySelector('.set')
+        var getBtn = document.querySelector('.get')
+        var deleteBtn = document.querySelector('.delete')
+        var delAll = document.querySelector('.delAll')
+
+
+        setBtn.addEventListener('click', function() {
+            // 存储数据
+            sessionStorage.setItem('uname', input.value)
+        })
+        getBtn.addEventListener('click', function() {
+            // 获取数据
+            console.log(sessionStorage.getItem('uname'));
+        })
+        deleteBtn.addEventListener('click', function() {
+            // 删除数据
+            sessionStorage.removeItem('uname')
+
+        })
+        delAll.addEventListener('click', function() {
+            // 删除所有数据
+            sessionStorage.clear()
+        })
+    </script>
+</body>
+
+</html>

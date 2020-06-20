@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="username" id="username"><input type="checkBox" id="remember">记住用户名
+    <script>
+        var username = document.querySelector('#username')
+        var checkBox = document.querySelector('#remember');
+        // 先判断本地是否存储了uname数据
+        if (localStorage.getItem('uname')) {
+            username.value = localStorage.getItem('uname')
+            checkBox.checked = true
+        }
+        // 为复选框绑定一个change事件
+        checkBox.addEventListener('change', function() {
+            // 如果勾选了复选框，则将新的表单数据保存起来
+            if (this.checked) {
+                localStorage.setItem('uname', username.value)
+            } else {
+                // 如果没有勾选复选框，则清除保存的数据
+                localStorage.removeItem('uname')
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>
