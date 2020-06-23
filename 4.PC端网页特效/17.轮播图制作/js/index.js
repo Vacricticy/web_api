@@ -1,17 +1,25 @@
-// 要点1：移入轮播图，显示左右按钮。移出则隐藏。
+// 要点1：移入轮播图，显示左右按钮，并暂停自动播放。移出则隐藏，并开启自动轮播。
 // 要点2：点击按钮，左右翻动轮播图，且小圆圈样式对应改变
 // 要点3：移入小圆圈，轮播图片
-// ❤ 核心算法：ul移动的距离等于小圆圈的索引号乘以图片的宽度
+// 要点4：通过节流阀实现 前一次轮播动画执行完后才能再次轮播动画
+// 要点5：无缝滚动的实现：
+// 在最后的位置添加第一张的图片，使其成为‘最后一张图片’。
+// 当向右滚动到‘最后一张图片’时，将显示的位置设置为实际的第一张图片。
+// 当向左滚动到‘第一张图片’时，将显示的位置设置为实际的最后一张图片。
 
-// 要点4：自动播放轮播图片，鼠标移入时，自动播放消失
-// 要点5：通过节流阀实现 前一次轮播动画执行完后才能再次轮播动画
+// ❤ 核心算法：ul移动的距离等于索引号乘以图片的宽度
+
 // 节流阀原理：
 // 在执行之前，先判断flag的值，满足条件则立即修改flag的值，防止本次动画结束前再次被调用。
 // 执行完毕后，在回调函数中修改flag的值，使其可以再次被调用。
-// 其实质相当于同步锁的问题，A一执行则立即将锁拿住，执行结束后再放锁。
+// ♥ 其实质相当于同步锁的概念，A一执行则立即将锁拿住，执行结束后再放锁。
+
+
+// ♥ 自动播放的实现：在定时器中调用右击函数
+
 
 window.addEventListener('load', function() {
-    // 要点1：移入轮播图，显示左右按钮。移出则隐藏。
+    // 移入轮播图，显示左右按钮。移出则隐藏。
     var arrow_l = document.querySelector('.arrow-l')
     var arrow_r = document.querySelector('.arrow-r')
     var focus = document.querySelector('.focus')
@@ -64,7 +72,7 @@ window.addEventListener('load', function() {
     ol.children[0].className = "current"
 
 
-    // 自动创建最后的图片，可以解决小圆圈多了一个的问题
+    // 自动创建最后的图片，否则小圆圈会多一个
     var lastLi = ul.children[0].cloneNode(true)
     ul.appendChild(lastLi)
 
@@ -72,10 +80,10 @@ window.addEventListener('load', function() {
     var flag = true
     arrow_r.addEventListener('click', function() {
         if (flag) {
-            flag = false
-                // ❤ 无缝切换的实现：
-                // 在html文件中为图片的后面再添加一张第一张的图片
-                // 当显示出最后添加的图片后，将ul的left设置为0，即恢复成初始状态，便实现了无缝切换
+            flag = false;
+            // ❤ 无缝切换的实现：
+            // 在html文件中为图片的后面再添加一张第一张的图片
+            // 当显示出最后添加的图片后，将ul的left设置为0，即恢复成初始状态，便实现了无缝切换
             if (num == ul.children.length - 1) {
                 ul.style.left = 0;
                 num = 0;
@@ -89,6 +97,7 @@ window.addEventListener('load', function() {
 
             // 点击按钮切换时控制小圆圈的样式
             cicle++
+            // 自加后判断是否已经到达‘最后一张’，是的话重置为0，即回到实际的第一张
             if (cicle == ol.children.length) {
                 cicle = 0
             }
@@ -101,8 +110,6 @@ window.addEventListener('load', function() {
         if (flag) {
             flag = false;
             // ❤ 无缝切换的实现：
-            // 在html文件中为图片的后面再添加一张第一张的图片
-            // 当显示出最后添加的图片后，将ul的left设置为0，即恢复成初始状态，便实现了无缝切换
             if (num == 0) {
                 num = ul.children.length - 1;
                 ul.style.left = -num * pictureWidth + 'px';

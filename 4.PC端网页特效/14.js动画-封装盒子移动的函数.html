@@ -39,7 +39,17 @@
         var btn = document.querySelector('button')
 
         function animate(element, target) {
-            // var会单独开辟内存空间,将time定时器绑定在元素对象上可以减少开销
+            // 1.为timer定时器单独创建一个var变量，会单独开辟内存空间，若存在多个定时器，则会浪费地址空间
+            // clearInterval(timer)
+            // var timer = setInterval(function() {
+            //     if (element.offsetLeft > target) {
+            //         clearInterval(timer)
+            //     }
+            //     element.style.left = element.offsetLeft + 1 + 'px';
+            // }, 10)
+
+
+            // 2.此时将timer定时器绑定在元素对象上可以减少开销
 
             // 步骤三：bug解决:若连续多次点击按钮，会不断的开启新的定时器，导致动画的速度不断的加快
             // 解决：每次调用前都清除上一次的动画

@@ -12,14 +12,14 @@
             background-color: green;
             position: absolute;
             top: 100px;
-            left: 0;
+            left: 200px;
         }
     </style>
 </head>
 
 <body>
     <button>移动至500处</button>
-    <button>移动至800处</button>
+    <button>移动至100处</button>
     <div></div>
     <script>
         // 缓动动画的基本原理
@@ -36,14 +36,13 @@
             clearInterval(element.move)
             element.move = setInterval(function() {
                 // 移动的距离通过公式求得，逐渐减少
-                // ❤ 问题1：step为小数时，位数的问题可能会导致移动的步长不准确。
-                // 解决：转化为整数处理,且正数必须向上取整，负数必须向下取整。
+                // ❤ 问题1：step为小数时，小数位数的精确度问题可能会导致移动的步长不准确。
+                // 解决：转化为整数处理,正数必须向上取整4.2->5，负数必须向下取整-4.2->-5。
                 var step = (target - element.offsetLeft) / 10;
-                // console.log(`target:${target} offsetLeft:${element.offsetLeft}  step:${step}`);
 
                 // 若移动方向为正，则step>0,应该向上取整；若移动方向为负，则step<0,应该向下取整
                 step = step > 0 ? Math.ceil(step) : Math.floor(step);
-                // 注意： 这里为了使元素能够原路返回， 必须使用 === ，而不能使用 >=
+                // 注意： 这里为了使元素在两个方向都能运动， 必须使用 === ，而不能使用 >=
                 if (element.offsetLeft === target) {
                     clearInterval(element.move)
                     callback && callback()
@@ -51,18 +50,17 @@
 
                 element.style.left = element.offsetLeft + step + 'px'
 
-                // console.log(element.style.left);
-
             }, 15)
 
         }
         btns[0].addEventListener('click', function() {
+            // 注意：这里的500表示目标位置，不是移动的距离
             move(div, 500, function() {
                 div.style.backgroundColor = "orange"
             })
         })
         btns[1].addEventListener('click', function() {
-            move(div, 800, function() {
+            move(div, 100, function() {
                 div.style.backgroundColor = "yellow"
             })
         })
