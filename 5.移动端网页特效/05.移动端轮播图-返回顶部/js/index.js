@@ -43,7 +43,7 @@ window.addEventListener('load', function() {
         }
 
 
-        // 去除带有样式的小圆圈，为当前索引的小圆圈添加样式
+        // ♥ 去除带有样式的小圆圈，为当前索引的小圆圈添加样式
         ol.querySelector('.current').classList.remove('current')
         ol.children[index].classList.add('current')
     })
