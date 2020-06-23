@@ -23,9 +23,9 @@
     </div>
     <script>
         var div = document.querySelector('div');
-        // scrollHeight返回的是内容的高度，不包含边框,但包含padding
-        // clentHeight返回的是height+padding
-        console.log(div.scrollHeight); //333+20=353
+        // scrollHeight返回的是'内容'+padding,不包含border
+        // clentHeight返回的是height+padding,不包含border
+        console.log(div.scrollHeight); //内容+40=414
         console.log(div.clientHeight); //200+40=240
 
         div.addEventListener('scroll', function() {

@@ -10,20 +10,20 @@
 <body>
     <button>添加</button>
     <p>222</p>
-    <div></div>
+    <div>333</div>
     <script>
         // 方式一：document.write()
-        // document.write("<div>333</div>")
+        document.write("<div>444</div>")
 
         // 若在页面渲染完毕后调用document.write()方法，则会导致页面重绘
         // var btn = document.querySelector('button')
         // btn.onclick = function() {
-        //     document.write("<div>333</div>")
+        //     document.write("<div>444</div>")
         // }
 
-        // 同上，onload方法会在页面渲染完后调用
+        // onload方法是在页面渲染完后调用的,所以此时调用write函数会重绘整个页面
         // window.onload = function() {
-        //     document.write("<div>333</div>")
+        //     document.write("<div>444</div>")
         // }
 
         // 方式二：document.createElement()
@@ -55,7 +55,7 @@
         console.log(end - start);
 
         // 综上：
-        // 创建多个元素时，使用innerHTML采用数组拼接的方式，其效率 > 使用createElement >>> 使用innerHTML采用字符串拼接的方式
+        // 创建多个元素时，使用innerHTML采用数组拼接的方式，其效率 > 使用createElement+appendChild >>> 使用innerHTML采用字符串拼接的方式
         // 但createElement的优点是结构更清晰
     </script>
 </body>

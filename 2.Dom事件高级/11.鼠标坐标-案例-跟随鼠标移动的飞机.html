@@ -22,6 +22,7 @@
         document.addEventListener('mousemove', function(e) {
             var x = e.pageX;
             var y = e.pageY;
+            // 跟随移动的元素必须带有定位
             img.style.left = x - img.offsetWidth / 2 + 'px';
             img.style.top = y - img.offsetHeight / 2 + 'px'
         })

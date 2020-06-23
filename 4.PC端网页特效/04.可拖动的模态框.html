@@ -167,10 +167,13 @@
         // 模态框跟着鼠标走的原理：
         var loginLitle = document.querySelector('#title')
         loginLitle.addEventListener('mousedown', function(e) {
-            // 步骤一：得到鼠标在盒子中的坐标
+            // 步骤一：当鼠标按下时，需要立即得到鼠标在盒子中的坐标
             var x = e.pageX - loginBox.offsetLeft;
             var y = e.pageY - loginBox.offsetTop;
             // 为整个页面添加鼠标移动事件
+            // ♥ 之所以不为loginBox添加mousemove事件，是因为鼠标若移动得太快，则会立即脱离登录盒子，
+            // 此时再移入盒子，又会再次触发mousemove事件，出现不按鼠标仍能移动盒子得怪异现象。
+            // 而将mousemove事件绑定在document上就不会出现这样的鼠标脱离‘事件所绑定的元素’的情况
             document.addEventListener('mousemove', move)
 
             function move(e) {

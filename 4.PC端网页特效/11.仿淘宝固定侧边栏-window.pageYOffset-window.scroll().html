@@ -75,7 +75,9 @@
     var main2Top = main2.offsetTop;
     // 1.为document绑定scroll事件
     document.addEventListener('scroll', function() {
-        // 2.通过window.pageYOffset获取页面被卷入的距离
+        console.log(document.scrollTop); //undefined
+        console.log(window.pageYOffset);
+        // 2.获取整个页面被卷入的距离只能使用window.pageYOffset，不能使用document.scrollTop
         // 3.卷入的距离大于bannerTop时，将侧边栏设置为固定布局，top设置为侧边栏初始与banner的距离
         if (window.pageYOffset >= bannerTop) {
             sliderBar.style.position = "fixed"

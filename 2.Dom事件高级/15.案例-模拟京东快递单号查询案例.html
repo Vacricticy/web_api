@@ -54,9 +54,12 @@
         // 案例介绍：
         // 在输入框中输入文字，会显示放大框
         // 若输入框中的文字为空，则隐藏输入框
+        // 移入输入框，若为空，则不显示放大框；若不为空，则显示放大框
+
         var input = document.querySelector('input')
         var con = document.querySelector('.con');
-        // 注意:这里不能使用keydown和keypress。❤文字是在keydown或keypress触发后再落入输入框中的
+        // ♥ 注意:这里不能使用keydown和keypress。
+        // 若使用的是keydown事件，则在文字落入输入框中之前，会先调用keydown事件，此时放大镜中获取并设置的数据是空的。
         input.addEventListener('keyup', function() {
             // 键入文字，为空时隐藏放大镜，不会空则显示放大镜
             if (this.value === "") {
@@ -77,5 +80,8 @@
             }
 
         })
+
+
+        // ♥ ♥ 总结：在输入框中按下一个键的整个过程：触发keydown事件->文字键入输入框中->触发keyup事件
     </script>
 </body>
