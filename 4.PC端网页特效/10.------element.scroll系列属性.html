@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        div {
-            height: 200px;
-            width: 200px;
-            background-color: yellow;
-            border: 1px solid blue;
-            padding: 20px;
-            overflow: auto;
-        }
+      .box1 {
+        height: 200px;
+        width: 200px;
+        background-color: yellow;
+        border: 1px solid blue;
+        padding: 20px;
+        /* box-sizing: border-box; */
+        overflow: auto;
+      }
+      .box2 {
+        width: 500px;
+        height: 500px;
+        background-color: olivedrab;
+        margin-top: 100px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <div>
-        你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害
+  <body>
+    <div class="box2">
+      <div class="box1">
+        你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害
+        你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害
+        你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害
+        你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害
+        你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害 你好厉害
+        你好厉害 你好厉害 你好厉害
+      </div>
     </div>
     <script>
-        var div = document.querySelector('div');
-        // scrollHeight返回的是'内容'+padding,不包含border
-        // clentHeight返回的是height+padding,不包含border
-        console.log(div.scrollHeight); //内容+40=414
-        console.log(div.clientHeight); //200+40=240
+      var div = document.querySelector(".box1");
+      // scrollHeight返回的是'内容'+padding,不包含border
+      // clentHeight返回的是height+padding,不包含border
+      console.log(div.scrollHeight); //内容+40=414
+      console.log(div.clientHeight); //200+40=240
 
-        div.addEventListener('scroll', function() {
-            //❤  scrollTop返回的是向下滚动后，上面被卷去的距离
-            console.log(div.scrollTop);
-        })
+      div.addEventListener("scroll", function () {
+        //❤  scrollTop返回的是向下滚动后，上面被卷去的距离
+        console.log(div.scrollTop);
+      });
     </script>
-</body>
-
+  </body>
 </html>

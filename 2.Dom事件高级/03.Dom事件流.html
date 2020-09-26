@@ -1,125 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        *,
-        html,
-        body {
-            margin: auto auto;
-        }
-        
-        .father {
-            width: 200px;
-            height: 200px;
-            background-color: black;
-            position: relative;
-        }
-        
-        .son {
-            width: 100px;
-            height: 100px;
-            background-color: yellow;
-            position: absolute;
-            top: 10%;
-            left: 10%;
-        }
+      *,
+      html,
+      body {
+        margin: auto auto;
+      }
+
+      .father {
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        position: relative;
+      }
+
+      .son {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="father">
-        <div class="son">
-
-        </div>
+      <div class="son"></div>
     </div>
     <script>
-        // 什么叫Dom事件流？
-        // 事件发生时会在元素节点之间按照特定的顺序传播，整个过程分为捕获阶段，目标阶段和冒泡阶段，这个传播过程叫做Dom事件流
+      // 什么叫Dom事件流？
+      // 事件发生时会在元素节点之间按照特定的顺序传播，整个过程分为捕获阶段，目标阶段和冒泡阶段，这个传播过程叫做Dom事件流
 
+      // addEventListener的第三个参数默认是false，表示在该事件的处理函数只会在冒泡阶段被调用。
+      // 若改为true,则事件处理函数只能在捕获阶段被调用。
 
-        // addEventListener的第三个参数默认是false，表示在该事件的处理函数只会在冒泡阶段被调用。
-        // 若改为true,则事件处理函数只能在捕获阶段被调用。
+      // onclick和attachEvent绑定的事件中事件处理函数只能在冒泡阶段被调用。
 
-        // onclick和attachEvent绑定的事件中事件处理函数只能在冒泡阶段被调用。
+      // 1.默认情况下，在冒泡阶段调用事件处理函数
+      // var father = document.querySelector(".father")
+      // father.addEventListener('click', function() {
+      //     alert('father')
+      // })
 
+      // var son = document.querySelector('.son')
+      // son.addEventListener('click', function() {
+      //     alert('son')
+      // })
 
+      // 提示框弹出顺序：son->father
 
-        // 1.默认情况下，在冒泡阶段调用事件处理函数
-        // var father = document.querySelector(".father")
-        // father.addEventListener('click', function() {
-        //     alert('father')
-        // })
+      // 2. 改为在捕获阶段调用事件处理函数
+      // var father = document.querySelector(".father")
+      // father.addEventListener('click', function() {
+      //     alert('father')
+      // }, true)
 
-        // var son = document.querySelector('.son')
-        // son.addEventListener('click', function() {
-        //     alert('son')
-        // })
+      // var son = document.querySelector('.son')
+      // son.addEventListener('click', function() {
+      //     alert('son')
+      // }, true)
 
-        // 提示框弹出顺序：son->father
+      // document.addEventListener('click', function() {
+      //     alert('document')
+      // }, true)
 
+      //弹出顺序：document->father->son
 
-        // 2. 改为在捕获阶段调用事件处理函数
-        // var father = document.querySelector(".father")
-        // father.addEventListener('click', function() {
-        //     alert('father')
-        // }, true)
+      // 3.组合,先处理捕获，再处理冒泡
+      var father = document.querySelector(".father");
+      father.addEventListener("click", function () {
+        alert("father");
+      });
 
-        // var son = document.querySelector('.son')
-        // son.addEventListener('click', function() {
-        //     alert('son')
-        // }, true)
+      var son = document.querySelector(".son");
 
-        // document.addEventListener('click', function() {
-        //     alert('document')
-        // }, true)
+      son.addEventListener("click", function () {
+        alert("son2");
+      });
+      son.addEventListener(
+        "click",
+        function () {
+          alert("son");
+        },
+        true
+      );
+      document.onclick = function () {
+        alert("onclick之document");
+      };
+      document.addEventListener("click", function () {
+        alert("document");
+      });
+      document.addEventListener(
+        "click",
+        function () {
+          alert("document1");
+        },
+        true
+      );
+      document.addEventListener(
+        "click",
+        function () {
+          setTimeout(() => {
+            alert("最后执行的捕获事件document1");
+          });
+        },
+        true
+      );
+      document.addEventListener(
+        "click",
+        function () {
+          alert("document2");
+        },
+        true
+      );
 
-        //弹出顺序：document->father->son
+      //弹出顺序：document1->document2->son2->son->father->onclick之document->document->最后执行的捕获事件document1
+      // 注意：目标元素身上同时存在冒泡事件和捕获事件时，会按照代码书写顺序进行执行
 
+      // js代码中只能执行捕获和冒泡阶段其中的一个。
+      // 指的是在‘同一段’addEventListener代码中，事件处理函数不会在捕获和冒泡阶段同时被调用
+      // 第三个参数为true，则表示捕获阶段调用。
+      // 为false，则表示冒泡阶段调用，默认值为false
 
+      // ❤总：当触发某一事件后，会依次经历捕获阶段和冒泡阶段，在这两个阶段中的相关元素只要绑定了该种事件类型的处理函数，则会被调用。
 
-        // 3.组合,先处理捕获，再处理冒泡
-        var father = document.querySelector(".father")
-        father.addEventListener('click', function() {
-            alert('father')
-        })
-
-        var son = document.querySelector('.son')
-        son.addEventListener('click', function() {
-            alert('son')
-        }, true)
-        son.addEventListener('click', function() {
-            alert('son2')
-        })
-        document.onclick = function() {
-            alert('onclick之document')
-        }
-        document.addEventListener('click', function() {
-            alert('document')
-        })
-        document.addEventListener('click', function() {
-            alert('document1')
-        }, true)
-        document.addEventListener('click', function() {
-            alert('document2')
-        }, true)
-
-
-        //弹出顺序：document1->document2->son->son2->father->onclick之document->document
-
-
-        // js代码中只能执行捕获和冒泡阶段其中的一个。
-        // 指的是在‘同一段’addEventListener代码中，事件处理函数不会在捕获和冒泡阶段同时被调用
-        // 第三个参数为true，则表示捕获阶段调用。
-        // 为false，则表示冒泡阶段调用，默认值为false
-
-
-
-        // ❤总：当触发某一事件后，会依次经历捕获阶段和冒泡阶段，在这两个阶段中的相关元素只要绑定了该种事件类型的处理函数，则会被调用。
+      // 4.实现非目标元素先冒泡后捕获
+      // var father = document.querySelector(".father");
+      // father.addEventListener(
+      //   "click",
+      //   function () {
+      //     setTimeout(() => {
+      //       alert("捕获");
+      //     });
+      //   },
+      //   true
+      // );
+      // father.addEventListener("click", function () {
+      //   alert("冒泡");
+      // });
+      // var son = document.querySelector(".son");
     </script>
-</body>
-
+  </body>
 </html>

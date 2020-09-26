@@ -1,87 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        
-        .search {
-            position: relative;
-            width: 178px;
-            margin: 100px;
-        }
-        
-        .con {
-            display: none;
-            position: absolute;
-            top: -40px;
-            width: 171px;
-            border: 1px solid rgba(0, 0, 0, .2);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-            padding: 5px 0;
-            font-size: 18px;
-            line-height: 20px;
-            color: #333;
-        }
-        
-        .con::before {
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
-            top: 28px;
-            left: 18px;
-            border: 8px solid #000;
-            border-style: solid dashed dashed;
-            border-color: #fff transparent transparent;
-        }
-    </style>
-</head>
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
-<body>
+      .search {
+        position: relative;
+        width: 178px;
+        margin: 100px;
+      }
+
+      .con {
+        display: none;
+        position: absolute;
+        top: -40px;
+        width: 171px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        padding: 5px 0;
+        font-size: 18px;
+        line-height: 20px;
+        color: #333;
+      }
+
+      .con::before {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 28px;
+        left: 18px;
+        border: 8px solid #000;
+        border-style: solid dashed dashed;
+        border-color: #fff transparent transparent;
+      }
+    </style>
+  </head>
+
+  <body>
     <div class="search">
-        <div class="con">123</div>
-        <input type="text" placeholder="请输入您的快递单号" class="jd">
+      <div class="con">123</div>
+      <input type="text" placeholder="请输入您的快递单号" class="jd" />
     </div>
     <script>
-        // 案例介绍：
-        // 在输入框中输入文字，会显示放大框
-        // 若输入框中的文字为空，则隐藏输入框
-        // 移入输入框，若为空，则不显示放大框；若不为空，则显示放大框
+      // 案例介绍：
+      // 在输入框中输入文字，会显示放大框
+      // 若输入框中的文字为空，则隐藏输入框
+      // 移入输入框，若为空，则不显示放大框；若不为空，则显示放大框
 
-        var input = document.querySelector('input')
-        var con = document.querySelector('.con');
-        // ♥ 注意:这里不能使用keydown和keypress。
-        // 若使用的是keydown事件，则在文字落入输入框中之前，会先调用keydown事件，此时放大镜中获取并设置的数据是空的。
-        input.addEventListener('keyup', function() {
-            // 键入文字，为空时隐藏放大镜，不会空则显示放大镜
-            if (this.value === "") {
-                con.style.display = "none"
-            } else {
-                con.style.display = "block"
-                con.innerHTML = this.value
-            }
-        });
-        // 焦点移出输入框，隐藏放大镜
-        input.addEventListener('blur', function() {
-            con.style.display = "none"
-        });
-        // 点击输入框，若有内容则显示放大镜
-        input.addEventListener('focus', function() {
-            if (this.value != "") {
-                con.style.display = "block"
-            }
+      var input = document.querySelector("input");
+      var con = document.querySelector(".con");
+      // ♥ 注意:这里不能使用keydown和keypress。因为我们的需求是输入进去后再进行判断里面的值是否为空。
+      // 而kwydown事件触发后文字才会被键入输入框，此时是监测不到最新键入的数据的。
+      input.addEventListener("keyup", function () {
+        // 键入文字，为空时隐藏放大镜，不会空则显示放大镜
+        if (this.value.trim() === "") {
+          con.style.display = "none";
+        } else {
+          con.style.display = "block";
+          con.innerHTML = this.value;
+        }
+      });
+      // 焦点移出输入框，隐藏放大镜
+      input.addEventListener("blur", function () {
+        con.style.display = "none";
+      });
+      // 点击输入框，若有内容则显示放大镜
+      input.addEventListener("focus", function () {
+        if (this.value != "") {
+          con.style.display = "block";
+        }
+      });
 
-        })
-
-
-        // ♥ ♥ 总结：在输入框中按下一个键的整个过程：触发keydown事件->文字键入输入框中->触发keyup事件
+      // ♥ ♥ 总结：在输入框中按下一个键的整个过程：触发keydown事件->文字键入输入框中->触发keyup事件
     </script>
-</body>
+  </body>
+</html>

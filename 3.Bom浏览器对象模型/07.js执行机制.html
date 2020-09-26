@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        console.log(1);
-        document.onclick = function() {
-            console.log('click');
-        }
-        setTimeout(function() {
-            console.log(3);
-        }, 2000)
-        console.log(2);
+      console.log(1);
+      document.onclick = function () {
+        console.log("click");
+      };
+      setTimeout(function () {
+        console.log(3);
+      }, 2000);
+      console.log(2);
 
+      // 1.先执行 执行栈中的同步任务
+      // 2.在执行的过程中，若遇到异步任务，则提交给异步进程处理
+      // 3.在异步进程中，若监听到某异步任务已经被触发了，即发送了点击，或者定时器时间已到，则将其放入任务队列中
+      // 4.执行栈中的所有同步任务执行完后，主线程通过事件循环机制不断的查询任务队列中是否存在异步任务，若存在，则立即调入执行栈中执行
 
-        // 1.先执行 执行栈中的同步任务
-        // 2.在执行的过程中，若遇到异步任务（回调函数），则提交给异步进程处理
-        // 3.在异步进程中，若监听到某异步任务已经被触发了，即发送了点击，或者定时器时间已到，则将其放入任务队列中
-        // 4.执行栈中的所有同步任务执行完后，主线程通过事件循环机制不断的查询任务队列中是否存在异步任务，若存在，则立即调入执行栈中执行
-
-
-        // 常见的异步任务：(异步任务的具体形式就是回调函数)
-        // 1.普通事件：click,resize
-        // 2.资源加载:load,error
-        // 3.定时器：setTimeout,setInterval
+      // 常见的异步任务：(异步任务的具体形式就是回调函数)
+      // 1.普通事件：click,resize
+      // 2.资源加载:load,error
+      // 3.定时器：setTimeout,setInterval
     </script>
-</body>
-
+  </body>
 </html>
