@@ -10,18 +10,23 @@
     <input type="text" />
     <script>
       var input = document.querySelector("input");
-      // 注意：这里不能使用keydown的原因是，文字会在keydown事件被调用后落入输入框。
+      // 注意：这里不能使用keydown和keypress的原因是，文字会在keydown和keypress事件被调用后落入输入框。
       // ❤ 一般在实际应用中键盘事件都是用的keyup松开事件
-      document.addEventListener("keyup", function (e) {
-        if (e.keyCode === 83) {
+      // document.addEventListener("keyup", function (e) {
+      //   if (e.keyCode === 83) {
+      //     input.focus();
+      //   }
+      // });
+      document.addEventListener("keypress", function (e) {
+        if (e.keyCode === 83 || e.keyCode == 115) {
           input.focus();
         }
       });
-      //   document.addEventListener("keydown", function (e) {
-      //     if (e.keyCode === 83) {
-      //       input.focus();
-      //     }
-      //   });
+      // document.addEventListener("keydown", function (e) {
+      //   if (e.keyCode === 83) {
+      //     input.focus();
+      //   }
+      // });
     </script>
   </body>
 </html>

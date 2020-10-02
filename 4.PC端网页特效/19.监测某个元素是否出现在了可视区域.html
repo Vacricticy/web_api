@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 2000px;
+      }
+      #div {
+        margin-top: 1000px;
+        width: 200px;
+        height: 200px;
+        background-color: black;
+      }
+      #div2 {
+        position: fixed;
+        top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div">dyagdiyagdyiwq</div>
+    <div id="div2">怎么看不到它</div>
+    <script>
+      window.addEventListener("scroll", function () {
+        let a = div.offsetTop, //获取元素距离html顶部的距离
+          b = window.pageYOffset, //获取页面滚动隐藏的距离
+          c = document.documentElement.clientHeight; //获取可视区域的高度
+        if (a > b + c) {
+          div2.innerHTML = "怎么看不到它";
+        } else if (a <= b + c && b <= a + div.clientHeight) {
+          div2.innerHTML = "啊啊啊，它来了(出现在了可视区域)";
+        } else {
+          div2.innerHTML = "呜呜呜，别走啊";
+        }
+      });
+    </script>
+  </body>
+</html>
