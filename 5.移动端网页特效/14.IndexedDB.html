@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function openDB(name) {
+        var request = indexedDB.open(name); //创建IndexedDB数据库链接,返回的是一个IDBOpenDBRequest对象
+        console.log(request);
+        request.onerror = function (e) {
+          console.log("open indexeddb error");
+        };
+        request.onsuccess = function (e) {
+          myDB.db = e.target.result; //获取的是IDBDatabase对象，这就是IndexedDB对象
+          console.log(myDB.db);
+        };
+      }
+      var myDB = {
+        name: "textDB",
+        version: "1",
+        db: null,
+      };
+      openDB(myDB);
+      //   关闭IndexedDB:
+      myDB.db.close();
+      //   删除IndexedDB数据库
+      indexedDB.deleteDatabase("name");
+    </script>
+  </body>
+</html>

@@ -1,192 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        div {
-            width: 100px;
-            height: 100px;
-            background-color: aqua;
-        }
-        
-        input {
-            color: #999
-        }
-    </style>
-</head>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+      }
 
-<body>
-    <div style="background-color:black;"></div>
+      input {
+        color: #999;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="background-color: black"></div>
     <p>
-        heiheihei
-        <strong>balabala</strong>
+      heiheihei
+      <strong>balabala</strong>
     </p>
     <input type="text" placeholder="手机" />
 
     <table>
-        <thead>
-            <tr>
-                <th><input type="checkbox" name="" id="allCheck"></th>
-                <th>商品</th>
-                <th>价格</th>
-            </tr>
-        </thead>
-        <tbody id="phone">
-            <tr>
-                <th><input type="checkbox" name="" id=""></th>
-                <td>iphone8</td>
-                <td>4000</td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" name="" id=""></th>
-                <td>iphone10</td>
-                <td>5000</td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" name="" id=""></th>
-                <td>iphoneXS</td>
-                <td>3000</td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th><input type="checkbox" name="" id="allCheck" /></th>
+          <th>商品</th>
+          <th>价格</th>
+        </tr>
+      </thead>
+      <tbody id="phone">
+        <tr>
+          <th><input type="checkbox" name="" id="" /></th>
+          <td>iphone8</td>
+          <td>4000</td>
+        </tr>
+        <tr>
+          <th><input type="checkbox" name="" id="" /></th>
+          <td>iphone10</td>
+          <td>5000</td>
+        </tr>
+        <tr>
+          <th><input type="checkbox" name="" id="" /></th>
+          <td>iphoneXS</td>
+          <td>3000</td>
+        </tr>
+      </tbody>
     </table>
 
     <script>
-        // 操作元素的方式
-        // 1.修改元素的内容
-        // innerText,innerHTML
+      // 操作元素的方式
+      // 1.修改元素的内容
+      // innerText,innerHTML
 
-        // innerText与innerHTML的区别
-        // innerText   1.获取的纯文本，不能设置html代码 2.【兼容性】非标准的，IE发起的，老版本的火狐不支持 
-        // innerHTML   1.可以设置和获取html代码 2.W3C制定的标准
-        var p = document.querySelector('p');
-        console.log(p.innerText);
-        console.log(p.innerHTML);
-        // p.innerText = "111<strong>222</strong>"
-        p.innerHTML = "111<strong>222</strong>";
+      // innerText与innerHTML的区别
+      // innerText   1.获取的纯文本，不能设置html代码 2.【兼容性】非标准的，IE发起的，老版本的火狐不支持
+      // innerHTML   1.可以设置和获取html代码 2.W3C制定的标准
+      var p = document.querySelector("p");
+      console.log(p.innerText);
+      console.log(p.innerHTML);
+      //   p.innerText = "111<strong>222</strong>";
+      p.innerHTML = "111<strong>222</strong>";
 
-        // ♥注意：两者都是元素的属性值，不是方法！！！赋值请用=，不要用函数调用的方式
-        // p.innerHTML = "111<strong>222</strong>"; √
-        // p.innerHTML("111<strong>222</strong>"); x
+      // ♥注意：两者都是元素的属性值，不是方法！！！赋值请用=，不要用函数调用的方式
+      // p.innerHTML = "111<strong>222</strong>"; √
+      // p.innerHTML("111<strong>222</strong>"); x
 
+      // 2.修改元素的属性
+      // src,href,id,alt,title
 
+      // 实际应用1：根据早中晚来显示不同的问候语
+      // 获取当前时间的小时数，判断<12 | >18,再修改Img标签的对应的src属性
 
+      // 3.修改表单的属性
+      // value,disabled,type,checked,selected
+      // input.value
+      // button.disabled
 
-        // 2.修改元素的属性
-        // src,href,id,alt,title
+      // 实际应用1：
+      // 常见的登录注册：输入密码后，点击按钮显示密码并修改图标，再次点击隐藏密码并修改图标
+      // ❤ ❤ 对于点击一个按钮，但有多种反应状态的情况，需要设计一个标记值flag来进行状态的更改，即每点击一次，都要修改flag的值。
+      // 但对于只有两个状态的情况来说，且恰巧这种两种状态只是为了更改样式，此时可以通过element.classList.toogle()方法来选择使用或删除该样式
+      // var flag = false
+      // xxx.onclick = function() {
+      //     falg = !flag;
+      //     if (flag) {
+      //         input.type = 'text';
+      //         img.src = '...'
+      //     } else {
+      //         input.type = 'password'
+      //         img.src = ''
+      //     }
+      // }
 
-        // 实际应用1：根据早中晚来显示不同的问候语
-        // 获取当前时间的小时数，判断<12 | >18,再修改Img标签的对应的src属性        
+      // 4.修改样式属性
+      // ❤dom元素有两种方式修改样式，一种是通过行内样式style，另一种是内嵌样式。
+      // ❤ 行内样式的权重比内嵌样式高
 
-        // 3.修改表单的属性
-        // value,disabled,type,checked,selected
-        // input.value
-        // button.disabled
+      // 4.1 修改行内样式：xxx.style
+      // xxx.style.backgroundColor = 'white'
+      // 注意：修改行内样式采用的是❤驼峰命令法。
+      // 即background-color----->backgroundColor
+      // margin-top----->marginTop
 
-        // 实际应用1：
-        // 常见的登录注册：输入密码后，点击按钮显示密码并修改图标，再次点击隐藏密码并修改图标
-        // ❤ ❤ 对于点击一个按钮，但有多种反应状态的情况，需要设计一个标记值flag来进行状态的更改，即每点击一次，都要修改flag的值。
-        // 但对于只有两个状态的情况来说，且恰巧这种两种状态只是为了更改样式，此时可以通过element.classList.toogle()方法来选择使用或删除该样式
-        // var flag = false
-        // xxx.onclick = function() {
-        //     falg = !flag;
-        //     if (flag) {
-        //         input.type = 'text';
-        //         img.src = '...'
-        //     } else {
-        //         input.type = 'password'
-        //         img.src = ''
-        //     }
-        // }
+      // 实际应用1：淘宝，点击关闭按钮，隐藏二维码
+      // 通过xxx.style.display='none'和xxx.style.display='block'隐藏和显示元素
 
-        // 4.修改样式属性
-        // ❤dom元素有两种方式修改样式，一种是通过行内样式style，另一种是内嵌样式。
-        // ❤ 行内样式的权重比内嵌样式高
+      // 实际应用2：京东搜索栏，键入输入框，清空原提示文本，输入的内容颜色变深。
+      // 移出文本框，若输入的值为空，则显示提示的文本，且提示的文本颜色变浅
+      // 绑定的事件有输入框聚焦事件onfocus,和移出事件onblur
+      // var input = document.querySelector('input')
+      // input.onfocus = function() {
+      //     if (this.placeholder === '手机') {
+      //         this.placeholder = ""
+      //         this.style.color = "#333"
+      //     }
+      // }
+      // input.onblur = function() {
+      //     if (this.value.trim() === "") {
+      //         this.placeholder = "手机"
+      //         this.style.color = "#999"
+      //     }
+      // }
 
-        // 4.1 修改行内样式：xxx.style
-        // xxx.style.backgroundColor = 'white'
-        // 注意：修改行内样式采用的是❤驼峰命令法。
-        // 即background-color----->backgroundColor
-        // margin-top----->marginTop
+      // 4.2 修改类名样式：element.className
+      // ❤用于对样式更改地比较多的情况
 
+      // 其他：
+      // 排他思想案例：京东轮播图下面的小圆点，移入某一个小圆点，该圆点会高亮，其他圆点的高亮会被隐藏。
+      // 排他思想原理：先取消所有的样式，再单独为触发的事件源设置样式
 
-        // 实际应用1：淘宝，点击关闭按钮，隐藏二维码
-        // 通过xxx.style.display='none'和xxx.style.display='block'隐藏和显示元素
+      // 其他实际应用：
+      // 1.百度点击小图标更换背景图的操作：获取所有的元素，循环绑定事件，将img事件源身上的src设置在document.body.style.backgroundImage上
 
-        // 实际应用2：京东搜索栏，键入输入框，清空原提示文本，输入的内容颜色变深。
-        // 移出文本框，若输入的值为空，则显示提示的文本，且提示的文本颜色变浅
-        // 绑定的事件有输入框聚焦事件onfocus,和移出事件onblur
-        var input = document.querySelector('input')
-        input.onfocus = function() {
-            if (this.placeholder === '手机') {
-                this.placeholder = ""
-                this.style.color = "#333"
+      // 2.新浪财经鼠标经过表格行时颜色变深，离开时颜色恢复
+      // 鼠标经过事件onmouseover：添加样式,鼠标离开事件onmouseout：清除样式
+
+      // 3.表单全选以及取消全选
+      // 要点1：将全选按钮的checked值赋值给所有的复选框
+      var allCheck = document.querySelector("#allCheck");
+      var inputs = document.querySelector("#phone").querySelectorAll("input");
+      console.log(inputs);
+      allCheck.onclick = function () {
+        inputs.forEach(function (value, index, array) {
+          // console.log(this); //问题：window??回调函数中的this指向的是window??
+          value.checked = allCheck.checked;
+        });
+      };
+      // 要点2：为每一个复选框绑定点击事件，每次触发时都判断是否所有的复选框都被选中，并设置一个标记值flag
+      // 若flag为true则选中全选按钮，否则不选中全选按钮
+      inputs.forEach(function (value) {
+        value.onclick = function () {
+          var flag = true;
+          // 方法一：推荐
+          for (var i = 0; i < inputs.length; i++) {
+            if (!inputs[i].checked) {
+              flag = false;
+              break; //提升执行效率
             }
-        }
-        input.onblur = function() {
-            if (this.value.trim() === "") {
-                this.placeholder = "手机"
-                this.style.color = "#999"
-            }
-        }
+          }
 
-        // 4.2 修改类名样式：element.className
-        // ❤用于对样式更改地比较多的情况
+          // 方法二：不推荐,因为这样会循环遍历每一个元素，会降低效率。
+          // inputs.forEach(function(value) {
+          //     if (!value.checked) {
+          //         flag = false;
+          //     }
+          // })
 
-
-        // 其他：
-        // 排他思想案例：京东轮播图下面的小圆点，移入某一个小圆点，该圆点会高亮，其他圆点的高亮会被隐藏。
-        // 排他思想原理：先取消所有的样式，再单独为触发的事件源设置样式
-
-        // 其他实际应用：
-        // 1.百度点击小图标更换背景图的操作：获取所有的元素，循环绑定事件，将img事件源身上的src设置在document.body.style.backgroundImage上
-
-        // 2.新浪财经鼠标经过表格行时颜色变深，离开时颜色恢复
-        // 鼠标经过事件onmouseover：添加样式,鼠标离开事件onmouseout：清除样式
-
-        // 3.表单全选以及取消全选
-        // 要点1：将全选按钮的checked值赋值给所有的复选框
-        var allCheck = document.querySelector("#allCheck")
-        var inputs = document.querySelector('#phone').querySelectorAll('input')
-        console.log(inputs);
-        allCheck.onclick = function() {
-            inputs.forEach(function(value, index, array) {
-                // console.log(this); //问题：window??回调函数中的this指向的是window??
-                value.checked = allCheck.checked
-            })
+          // 方法三：不能使用，因为通过querySelectorAll获取到的是伪数组NodeList。
+          // 伪数组只有entries,forEach,keys方法，没有some方法。
+          // 而且该方法可读性不强
+          // flag = !inputs.some(value => {
+          //     return value.checked === false
+          // })
+          allCheck.checked = flag;
         };
-        // 要点2：为每一个复选框绑定点击事件，每次触发时都判断是否所有的复选框都被选中，并设置一个标记值flag
-        // 若flag为true则选中全选按钮，否则不选中全选按钮
-        inputs.forEach(function(value) {
-            value.onclick = function() {
-                var flag = true;
-                // 方法一：推荐
-                for (var i = 0; i < inputs.length; i++) {
-                    if (!inputs[i].checked) {
-                        flag = false;
-                        break; //提升执行效率
-                    }
-                };
-
-                // 方法二：不推荐,因为这样会循环遍历每一个元素，会降低效率。
-                // inputs.forEach(function(value) {
-                //     if (!value.checked) {
-                //         flag = false;
-                //     }
-                // })
-
-                // 方法三：不能使用，因为通过querySelectorAll获取到的是伪数组NodeList。
-                // 伪数组只有entries,forEach,keys方法，没有some方法。
-                // 而且该方法可读性不强
-                // flag = !inputs.some(value => {
-                //     return value.checked === false
-                // })
-                allCheck.checked = flag
-            }
-        })
+      });
     </script>
-</body>
-
+  </body>
 </html>
