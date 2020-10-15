@@ -1,39 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <div id="div" index="1" class="divClass"></div>
+  <body>
+    <div id="div" index2="1" class="divClass" title="hahaha">
+      <span>hello</span>this is the world
+    </div>
     <script>
-        var div = document.querySelector('div');
+      var div = document.querySelector("div");
 
-        // 1.获取属性值的两种方式：
-        // 方式一：element.属性名 获取的是元素内置的属性值        
-        // console.log(div.id);
-        // 方式二：element.getAttribute('index') 还可以获取自定义的属性值
-        // console.log(div.getAttribute('id'));
-        // console.log(div.getAttribute('index'));
+      /* attribute与property的区别：
+        atrribute是指html标签上的特殊属性以及自定义的属性，比如class,id,title,alt
+        property是指dom节点对象身上的属性包括特殊属性，比如className,children,childNodes,attributes，但不包括自定义属性。
+        property里的attributes属性包括了attribute属性和自定义的attribute
+       */
 
-        // 2.设置属性值
-        div.balabala = 2;
-        div.id = "div2"
-        div.className = "divClass1"
-        div.setAttribute('index', 2)
-        div.setAttribute('class', 'divClass2'); //这里的class是内置属性
-        div.setAttribute('balabala2', '22'); //自定义属性
-        console.dir(div);
-        // 一般设置内置属性直接用element.id这种方式，设置自定义属性使用element.setAttribute
-        // element.id这种方式是直接设置在内置对象上的，自定义属性是直接设置在outerHTML上的
+      // 设置属性值
+      div.balabala = 2; //设置内置属性
+      div.id = "div2"; //修改特殊属性
+      div.className = "divClass1"; //修改特殊属性
 
-        // 3.移除属性值
-        // div.removeAttribute('index')
-        // div.removeAttribute('id')
+      div.setAttribute("class", "divClass2"); //修改特殊属性
+      div.setAttribute("balabala2", "22"); //设置自定义属性
+      div.setAttribute("index2", 2); //修改自定义属性
+
+      div.balabala2 = "33"; //试图修改自定义属性，但其实最终是设置了一个内置属性
+
+      // 获取属性值的两种方式：
+      // 方式一：element.属性名 只能获取元素内置的属性值
+      // console.log(div.id);
+      // 方式二：element.getAttribute('index2') 获取的是attibute,即特殊属性和自定义属性
+      // console.log(div.getAttribute('id'));
+      // console.log(div.getAttribute('index2'));
+      console.log(div.index2); //自定义属性不在dom节点对象上，只能通过element.attributes获取到
+      console.log(div.getAttribute("index2")); //2 获取自定义属性
+      console.log(div.balabala); //2 获取内置属性
+      console.log(div.getAttribute("balabala")); //null getAttribute只能获取attribute属性
+
+      console.dir(div);
+
+      /*  element.id与setAttribute的区别：
+        相同点：都可以对特殊属性进行修改
+        不同点：
+            设置属性时，element.id是直接在节点上设置的内置属性
+            setAttribute设置的是自定义属性，不会被添加到dom节点对象上，但最终可以通过element.attributes()获取到
+       */
+
+      // 移除属性
+      // div.removeAttribute('index')
+      // div.removeAttribute('id')
+
+      // dom节点的attrbutes属性中保存了所有特殊属性和自定义属性，每个属性的相关值都是一个Attr节点。
+      console.log(div.attributes[0].nodeName);
+      console.log(div.attributes[0].nodeValue);
+      console.log(div.attributes[0].nodeType); //2
+
+      //   获取某一个节点上所有的属性
+      let arr = [];
+      for (var item of div.attributes) {
+        arr.push({
+          attribute: item.nodeName,
+          value: item.nodeValue,
+        });
+      }
+      console.log(arr);
     </script>
-</body>
-
+  </body>
 </html>
