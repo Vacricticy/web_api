@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        // window.load是在页面的Dom元素，图片，css，flash加载完毕后才调用 
-        // window.onload = function() {
-        //     var btn = document.querySelector('button')
-        //     btn.onclick = function() {
-        //         alert(22)
-        //     }
-        // }
-        // window.addEventListener('load', function() {
-        //     var btn = document.querySelector('button')
-        //     btn.onclick = function() {
-        //         alert(22)
-        //     }
-        // })
-        window.addEventListener('load', function() {
-            alert(222)
-        })
+      // window.load是在页面的Dom元素，图片，css，flash加载完毕后才调用
+      // window.onload = function() {
+      //     var btn = document.querySelector('button')
+      //     btn.onclick = function() {
+      //         alert(22)
+      //     }
+      // }
+      // window.addEventListener('load', function() {
+      //     var btn = document.querySelector('button')
+      //     btn.onclick = function() {
+      //         alert(22)
+      //     }
+      // })
+      window.addEventListener("load", function () {
+        alert(222);
+      });
 
-        // DOMContentLoaded是在DOM加载完毕后调用，不需等待图片等加载完，不会影响用户的体验。
-        // 主要用于图片比较大的网站
-        document.addEventListener('DOMContentLoaded', function() {
-            alert(3333)
-        })
+      // DOMContentLoaded是在DOM加载完毕后调用，不需等待图片等加载完，不会影响用户的体验。
+      // 主要用于图片比较大的网站
+      document.addEventListener("DOMContentLoaded", function () {
+        alert(3333);
+      });
 
-        // 弹出框顺序：3333->222
+      // 弹出框顺序：3333->222
     </script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <button>按钮</button>
-</body>
-
+  </body>
 </html>
